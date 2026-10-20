@@ -238,7 +238,43 @@
     color: var(--text);
     font-size: 1rem;
   }
+  .modal-invest-amount {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    margin-bottom: 0.25rem;
+  }
   .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
+  .view-tabs { display: flex; gap: 0.5rem; margin-top: 1rem; }
+  .view-tab {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .view-tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .sim-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .sim-summary-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+  .sim-summary-label { display: block; font-size: 0.7rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .sim-summary-value { font-size: 1.1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
   .btn-primary, .btn-secondary {
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -269,19 +305,15 @@
   </div>
 </header>
 <main>
+  <div class="view-tabs">
+    <button id="tabScreener" class="view-tab active" type="button">📊 スクリーナー</button>
+    <button id="tabSim" class="view-tab" type="button">📈 シミュレーション</button>
+  </div>
+  <div id="screenerView">
   <div class="panel" id="favoritesPanel" style="display:none;">
     <div class="panel-title">⭐ マイ銘柄</div>
     <div id="favoritesList"></div>
     <div class="panel-note">この端末のブラウザにのみ保存されます(他の端末やブラウザとは共有されません)。</div>
-  </div>
-  <div class="panel" id="simPanel" style="display:none;">
-    <div class="panel-title">📈 シミュレーション(仮想購入の損益)</div>
-    <div id="simList"></div>
-    <div id="simTotal" class="sim-total"></div>
-    <div class="panel-note">
-      実際の売買ではなく、指定した価格・数量で購入したと仮定した場合の評価損益を計算する機能です。
-      この端末のブラウザにのみ保存されます。本日のデータに含まれない銘柄は評価損益を計算できません。
-    </div>
   </div>
   <div class="panel">
     <div class="filters">
@@ -353,6 +385,21 @@
     </div>
     <div id="emptyState" class="empty-state" style="display:none;"></div>
   </div>
+  </div>
+  <div id="simView" style="display:none;">
+    <div class="panel">
+      <div class="panel-title">📈 シミュレーション(仮想購入の損益)</div>
+      <div class="sim-summary-grid" id="simSummary"></div>
+      <div id="simList"></div>
+      <div id="simEmpty" class="empty-state" style="display:none;">
+        まだシミュレーションに追加した銘柄がありません。「📊 スクリーナー」画面の各行にある📈ボタンから追加してください。
+      </div>
+      <div class="panel-note">
+        実際の売買ではなく、指定した価格・数量で購入したと仮定した場合の評価損益を計算する機能です。
+        この端末のブラウザにのみ保存されます。本日のデータに含まれない銘柄は評価損益を計算できません。
+      </div>
+    </div>
+  </div>
 </main>
 <div id="simModal" class="modal-overlay" style="display:none;">
   <div class="modal-box">
@@ -366,6 +413,7 @@
       <label for="simPrice">購入価格(円)</label>
       <input id="simPrice" type="number" min="0" step="0.1">
     </div>
+    <div class="modal-invest-amount" id="simInvestAmount">投資金額: -</div>
     <div class="modal-actions">
       <button id="simCancelBtn" class="btn-secondary">キャンセル</button>
       <button id="simSaveBtn" class="btn-primary">保存</button>
@@ -428,12 +476,24 @@ const state = {
 
 let simModalTarget = null;
 
+function updateSimInvestAmount() {
+  const qty = parseFloat(document.getElementById("simQty").value);
+  const price = parseFloat(document.getElementById("simPrice").value);
+  const el = document.getElementById("simInvestAmount");
+  if (qty > 0 && price > 0) {
+    el.textContent = `投資金額: ${Math.round(qty * price).toLocaleString()}円`;
+  } else {
+    el.textContent = "投資金額: -";
+  }
+}
+
 function openSimModal(code, name, defaultPrice) {
   simModalTarget = { code, name };
   document.getElementById("simModalStockName").textContent = `${code} ${name}`;
   document.getElementById("simQty").value = 100;
   document.getElementById("simPrice").value = defaultPrice != null ? defaultPrice : "";
   document.getElementById("simModal").style.display = "flex";
+  updateSimInvestAmount();
 }
 
 function openSimModalByCode(code) {
@@ -465,6 +525,7 @@ function saveSimFromModal() {
   saveSimPositions(state.simPositions);
   closeSimModal();
   render();
+  switchView("sim");
 }
 
 function removeSimPosition(id) {
@@ -622,19 +683,24 @@ function render() {
 }
 
 function renderSimPanel() {
-  const panel = document.getElementById("simPanel");
+  const summaryEl = document.getElementById("simSummary");
   const listEl = document.getElementById("simList");
-  const totalEl = document.getElementById("simTotal");
+  const emptyEl = document.getElementById("simEmpty");
+
   if (!state.simPositions.length) {
-    panel.style.display = "none";
+    summaryEl.innerHTML = "";
+    listEl.innerHTML = "";
+    emptyEl.style.display = "block";
     return;
   }
-  panel.style.display = "block";
+  emptyEl.style.display = "none";
 
-  let totalProfit = 0;
+  let totalInvested = 0;
+  let totalValue = 0;
   let hasKnown = false;
 
   listEl.innerHTML = state.simPositions.map(p => {
+    const invested = p.quantity * p.buyPrice;
     const cur = currentPriceFor(p.code);
     const buyDateStr = new Date(p.buyDate).toLocaleDateString("ja-JP");
     if (cur == null) {
@@ -642,16 +708,18 @@ function renderSimPanel() {
         <div class="sim-item">
           <div class="sim-main">
             <span class="fav-name">${p.code} ${p.name}</span>
-            <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円(${buyDateStr}購入)</span>
+            <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円 = 投資金額${invested.toLocaleString()}円(${buyDateStr}購入)</span>
           </div>
           <span class="sim-unknown">本日の価格データなし</span>
           <button class="star-btn" onclick="removeSimPosition('${p.id}')" title="削除">✕</button>
         </div>
       `;
     }
-    const profit = (cur - p.buyPrice) * p.quantity;
+    const currentValue = cur * p.quantity;
+    const profit = currentValue - invested;
     const profitPct = (cur - p.buyPrice) / p.buyPrice * 100;
-    totalProfit += profit;
+    totalInvested += invested;
+    totalValue += currentValue;
     hasKnown = true;
     const cls = profit > 0 ? "chg-up" : profit < 0 ? "chg-down" : "";
     const sign = profit >= 0 ? "+" : "";
@@ -659,7 +727,7 @@ function renderSimPanel() {
       <div class="sim-item">
         <div class="sim-main">
           <span class="fav-name">${p.code} ${p.name}</span>
-          <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円 → 現在値${cur.toLocaleString()}円(${buyDateStr}購入)</span>
+          <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円 = 投資金額${invested.toLocaleString()}円 → 現在値${cur.toLocaleString()}円・評価額${currentValue.toLocaleString()}円(${buyDateStr}購入)</span>
         </div>
         <span class="sim-profit ${cls}">${sign}${Math.round(profit).toLocaleString()}円(${sign}${profitPct.toFixed(1)}%)</span>
         <button class="star-btn" onclick="removeSimPosition('${p.id}')" title="削除">✕</button>
@@ -667,13 +735,29 @@ function renderSimPanel() {
     `;
   }).join("");
 
+  const totalInvestedAll = state.simPositions.reduce((sum, p) => sum + p.quantity * p.buyPrice, 0);
+  const totalProfit = totalValue - totalInvested;
+  const profitCls = totalProfit > 0 ? "chg-up" : totalProfit < 0 ? "chg-down" : "";
+  const profitSign = totalProfit >= 0 ? "+" : "";
+  const profitPctAll = totalInvested ? (totalProfit / totalInvested * 100) : 0;
+
+  const items = [
+    { label: "合計投資金額", value: `${totalInvestedAll.toLocaleString()}円` },
+  ];
   if (hasKnown) {
-    const cls = totalProfit > 0 ? "chg-up" : totalProfit < 0 ? "chg-down" : "";
-    const sign = totalProfit >= 0 ? "+" : "";
-    totalEl.innerHTML = `合計評価損益: <span class="${cls}">${sign}${Math.round(totalProfit).toLocaleString()}円</span>`;
-  } else {
-    totalEl.textContent = "";
+    items.push({ label: "現在評価額", value: `${Math.round(totalValue).toLocaleString()}円` });
+    items.push({
+      label: "合計評価損益",
+      value: `<span class="${profitCls}">${profitSign}${Math.round(totalProfit).toLocaleString()}円(${profitSign}${profitPctAll.toFixed(1)}%)</span>`,
+    });
   }
+
+  summaryEl.innerHTML = items.map(it => `
+    <div class="sim-summary-item">
+      <span class="sim-summary-label">${it.label}</span>
+      <span class="sim-summary-value">${it.value}</span>
+    </div>
+  `).join("");
 }
 
 function renderFavoritesPanel() {
@@ -812,6 +896,24 @@ document.getElementById("simSaveBtn").addEventListener("click", saveSimFromModal
 document.getElementById("simModal").addEventListener("click", (e) => {
   if (e.target.id === "simModal") closeSimModal();
 });
+document.getElementById("simQty").addEventListener("input", updateSimInvestAmount);
+document.getElementById("simPrice").addEventListener("input", updateSimInvestAmount);
+
+function switchView(view) {
+  const screenerBtn = document.getElementById("tabScreener");
+  const simBtn = document.getElementById("tabSim");
+  const screenerView = document.getElementById("screenerView");
+  const simView = document.getElementById("simView");
+  const toSim = view === "sim";
+  screenerView.style.display = toSim ? "none" : "block";
+  simView.style.display = toSim ? "block" : "none";
+  simBtn.classList.toggle("active", toSim);
+  screenerBtn.classList.toggle("active", !toSim);
+  if (toSim) renderSimPanel();
+}
+
+document.getElementById("tabScreener").addEventListener("click", () => switchView("screener"));
+document.getElementById("tabSim").addEventListener("click", () => switchView("sim"));
 
 // シミュレーションの評価損益は、当日の深掘りスキャン対象(scores.json)に限らず
 // 価格帯スキャンの全銘柄(prices.json)から現在値を引けるようにする
