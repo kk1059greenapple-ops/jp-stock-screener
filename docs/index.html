@@ -126,6 +126,24 @@
   .news-title a { color: var(--text); text-decoration: none; }
   .news-title a:hover { text-decoration: underline; }
   .news-sub { color: var(--muted); font-size: 0.75rem; margin-top: 0.15rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .tech-panel {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.75rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+  .tech-panel-title { font-size: 0.72rem; color: var(--muted); font-weight: 600; margin-bottom: 0.4rem; }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .tech-item { display: flex; flex-direction: column; }
+  .tech-label { color: var(--muted); font-size: 0.68rem; }
+  .tech-reasons { margin: 0.5rem 0 0; padding-left: 1.1rem; font-size: 0.78rem; color: var(--text); }
+  .news-heading { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 0.3rem; }
   .fake-flag {
     color: var(--badge-low);
     font-weight: 600;
@@ -151,11 +169,12 @@
 <body>
 <header>
   <h1>日本株 上昇期待度スクリーナー</h1>
-  <p class="subtitle">楽天証券取扱いの国内株(東証上場)が対象 / ニュース見出しから算出した参考指標</p>
+  <p class="subtitle">楽天証券取扱いの国内株(東証上場)が対象 / ニュース+価格データ(テクニカル指標)から算出した参考指標</p>
   <div class="disclaimer">
-    ⚠️ これは投資助言ではありません。「上昇期待度」はニュースの見出しを機械的に解析した参考スコアであり、将来の株価を保証しません。
-    発信元の信頼度が低い・裏取りが取れていないニュースには「⚠要注意」を表示しています。実際の売買前に、必ずご自身でニュース原文と
-    <strong>楽天証券での取扱い有無</strong>をご確認ください。
+    ⚠️ これは投資助言ではありません。「上昇期待度」はニュース見出しの解析と、移動平均・RSI・日経平均との相対強さなど
+    <strong>過去の値動きのみに基づく客観的なテクニカル指標</strong>を組み合わせた参考スコアであり、将来の株価を保証しません。
+    ニュースは発信元の信頼度が低い・裏取りが取れていない場合「⚠要注意」を表示します。PER・PBR・配当利回りは参考情報であり、
+    割安=即上昇を意味しません。実際の売買前に、必ずご自身でニュース原文と<strong>楽天証券での取扱い有無</strong>をご確認ください。
   </div>
 </header>
 <main>
@@ -183,6 +202,8 @@
           <option value="change_pct:-1">前日比(値上がり)が大きい順</option>
           <option value="change_pct:1">前日比(値下がり)が大きい順</option>
           <option value="news_count:-1">ニュース件数が多い順</option>
+          <option value="technical_score:-1">テクニカル良好順(トレンド・RSI・対日経)</option>
+          <option value="technical_score:1">テクニカル不良順</option>
           <option value="price:1">株価が安い順</option>
           <option value="price:-1">株価が高い順</option>
           <option value="code:1">銘柄コード順</option>
@@ -253,6 +274,7 @@ const sortAccessors = {
   expectation_pct: s => s.expectation_pct,
   confidence: s => confScore(s),
   news_count: s => s.news_count,
+  technical_score: s => (typeof s.technical_score === "number" ? s.technical_score : 0),
 };
 
 function fmtPct(v) {
@@ -335,10 +357,9 @@ function toggleNews(tr, stock) {
   const td = document.createElement("td");
   td.colSpan = 8;
 
-  if (!stock.news || stock.news.length === 0) {
-    td.textContent = "関連ニュースが見つかりませんでした。";
-  } else {
-    td.innerHTML = stock.news.map(n => `
+  const newsHtml = (!stock.news || stock.news.length === 0)
+    ? "<p>関連ニュースが見つかりませんでした。</p>"
+    : stock.news.map(n => `
       <div class="news-item">
         <div class="news-title"><a href="${n.link}" target="_blank" rel="noopener">${n.title}</a></div>
         <div class="news-sub">
@@ -349,10 +370,52 @@ function toggleNews(tr, stock) {
         </div>
       </div>
     `).join("");
-  }
+
+  td.innerHTML = renderTechnicalPanel(stock) + '<div class="news-heading">関連ニュース</div>' + newsHtml;
 
   newsRow.appendChild(td);
   tr.after(newsRow);
+}
+
+function trendLabel(signal) {
+  if (signal === 1) return "上昇トレンド";
+  if (signal === -1) return "下降トレンド";
+  return "中立(方向感なし)";
+}
+
+function renderTechnicalPanel(stock) {
+  const tf = stock.technical;
+  const fund = stock.fundamentals || {};
+  const hasFund = Object.keys(fund).length > 0;
+
+  if (!tf && !hasFund) {
+    return "";
+  }
+
+  const items = [];
+  if (tf) {
+    items.push(`<div class="tech-item"><span class="tech-label">トレンド</span>${trendLabel(tf.trend_signal)}</div>`);
+    if (tf.rsi14 != null) items.push(`<div class="tech-item"><span class="tech-label">RSI(14日)</span>${tf.rsi14}</div>`);
+    if (tf.sma25 != null) items.push(`<div class="tech-item"><span class="tech-label">25日移動平均</span>${tf.sma25.toLocaleString()}円</div>`);
+    if (tf.sma75 != null) items.push(`<div class="tech-item"><span class="tech-label">75日移動平均</span>${tf.sma75.toLocaleString()}円</div>`);
+    items.push(`<div class="tech-item"><span class="tech-label">52週レンジ内位置</span>${(tf.range_pos_52w * 100).toFixed(0)}%(安値${tf.low_52w.toLocaleString()}円〜高値${tf.high_52w.toLocaleString()}円)</div>`);
+    if (tf.change_1m_pct != null) items.push(`<div class="tech-item"><span class="tech-label">1ヶ月騰落率</span>${fmtPct(tf.change_1m_pct)}</div>`);
+    if (tf.change_3m_pct != null) items.push(`<div class="tech-item"><span class="tech-label">3ヶ月騰落率</span>${fmtPct(tf.change_3m_pct)}</div>`);
+    if (tf.relative_strength_1m_vs_nikkei != null) items.push(`<div class="tech-item"><span class="tech-label">対日経平均(1ヶ月)</span>${fmtPct(tf.relative_strength_1m_vs_nikkei)}pt</div>`);
+  }
+  if (fund.per != null) items.push(`<div class="tech-item"><span class="tech-label">PER</span>${fund.per}倍</div>`);
+  if (fund.pbr != null) items.push(`<div class="tech-item"><span class="tech-label">PBR</span>${fund.pbr}倍</div>`);
+  if (fund.dividend_yield_pct != null) items.push(`<div class="tech-item"><span class="tech-label">配当利回り</span>${fund.dividend_yield_pct}%</div>`);
+
+  const reasons = (stock.technical_reasons || []).map(r => `<li>${r}</li>`).join("");
+
+  return `
+    <div class="tech-panel">
+      <div class="tech-panel-title">テクニカル・ファンダメンタルズ(Yahoo Financeの価格データに基づく客観指標)</div>
+      <div class="tech-grid">${items.join("")}</div>
+      ${reasons ? `<ul class="tech-reasons">${reasons}</ul>` : ""}
+    </div>
+  `;
 }
 
 document.querySelectorAll("#stockTable th[data-key]").forEach(th => {

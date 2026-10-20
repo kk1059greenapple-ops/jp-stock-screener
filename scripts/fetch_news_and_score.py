@@ -1,8 +1,12 @@
-"""価格帯でフィルタ済みの銘柄(data/prices.json)についてGoogleニュースRSS(無料)でニュースを検索し、
-発信元の信頼度・見出しの煽り表現・直近の値動きを加味した「上昇期待度」を算出して
-data/scores.json に保存する。
+"""価格帯でフィルタ済みの銘柄(data/prices.json)について、
+(1) GoogleニュースRSS(無料)の関連ニュースと、
+(2) yfinance(無料・Yahoo Financeベース)の直近1年の値動きから算出したテクニカル指標・ファンダメンタルズ
+の両面から「上昇期待度」を算出して data/scores.json に保存する。
 
-上昇期待度はニュース見出しから機械的に算出した参考指標であり、将来の株価を予測・保証するものではない。
+テクニカル指標は取引所の実際の値動きそのものに基づく客観データであり、ニュース見出しの解析よりも
+裏付けが確実なため、ニュース起因のスコアとは別の補助情報として明確に区別して加点する。
+
+上昇期待度は機械的に算出した参考指標であり、将来の株価を予測・保証するものではない。
 """
 import argparse
 import json
@@ -14,6 +18,14 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from common import RAKUTEN_QUOTE_URL, credibility_for_source, is_clickbait, sentiment_for_text
+from technical_factors import (
+    NIKKEI_TICKER,
+    SLEEP_BETWEEN_INFO_CALLS,
+    fetch_price_history,
+    fundamentals_for,
+    technical_factors_for,
+    technical_score,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -68,7 +80,7 @@ def fetch_news(query):
     return items
 
 
-def score_stock(stock):
+def score_stock(stock, tf=None, fundamentals=None):
     query = f"{stock['name']} 株価"
     try:
         articles = fetch_news(query)
@@ -79,6 +91,9 @@ def score_stock(stock):
             "confidence": "低(ニュース取得失敗)",
             "confidence_score": 0.0,
             "news": [],
+            "technical": tf,
+            "technical_reasons": [],
+            "fundamentals": fundamentals or {},
             "error": str(exc),
         }
 
@@ -115,8 +130,15 @@ def score_stock(stock):
         corroboration_bonus -= 8
 
     momentum_component = max(-10.0, min(10.0, stock.get("change_pct", 0.0)))
+    tech_score, tech_reasons = technical_score(tf)
 
-    expectation = 50 + avg_sentiment * 30 + corroboration_bonus + momentum_component * 0.5
+    expectation = (
+        50
+        + avg_sentiment * 25
+        + corroboration_bonus
+        + momentum_component * 0.3
+        + tech_score * 20
+    )
     expectation = max(0.0, min(100.0, expectation))
 
     avg_weight = weight_sum / len(articles) if articles else 0.0
@@ -135,6 +157,10 @@ def score_stock(stock):
         "confidence": confidence,
         "confidence_score": round(avg_weight, 3),
         "news": enriched,
+        "technical": tf,
+        "technical_score": round(tech_score, 3),
+        "technical_reasons": tech_reasons,
+        "fundamentals": fundamentals or {},
     }
 
 
@@ -154,9 +180,18 @@ def main():
     if args.limit:
         stocks = stocks[: args.limit]
 
+    print(f"fetching 1y price history for {len(stocks)} stocks + Nikkei 225 ...")
+    history = fetch_price_history([s["code"] for s in stocks])
+    nikkei_closes = history.get(NIKKEI_TICKER)
+
     results = []
     for i, stock in enumerate(stocks, 1):
-        info = score_stock(stock)
+        closes = history.get(f"{stock['code']}.T")
+        tf = technical_factors_for(closes, nikkei_closes)
+        fundamentals = fundamentals_for(stock["code"], price=stock.get("price"))
+        time.sleep(SLEEP_BETWEEN_INFO_CALLS)
+
+        info = score_stock(stock, tf=tf, fundamentals=fundamentals)
         results.append({**stock, **info, "rakuten_url": RAKUTEN_QUOTE_URL.format(code=stock["code"])})
         print(f"[{i}/{len(stocks)}] {stock['code']} {stock['name']}: {info['expectation_pct']}%")
         time.sleep(SLEEP_BETWEEN_REQUESTS)
@@ -167,8 +202,9 @@ def main():
             {
                 "generated_at": datetime.now(timezone.utc).isoformat(),
                 "disclaimer": (
-                    "本スコアはニュース見出し等から機械的に算出した参考指標であり、"
-                    "投資助言ではありません。将来の株価を保証するものではなく、"
+                    "本スコアはニュース見出しの解析と、移動平均・RSI・日経平均との相対強さ等の"
+                    "テクニカル指標(過去の値動きのみに基づく客観データ)を組み合わせて機械的に算出した"
+                    "参考指標であり、投資助言ではありません。将来の株価を保証するものではなく、"
                     "最終判断および楽天証券での取扱い確認はご自身で行ってください。"
                 ),
                 "stocks": results,
