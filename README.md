@@ -39,6 +39,12 @@
    (quoteSummary)はクラム認証が必要で、GitHub Actionsのようなクラウド実行環境の共有IPからの
    アクセスをYahoo Finance側がブロックすることを実際に確認したため(価格データ自体のchart APIは
    クラム不要でブロックされない)。
+
+   **ただし株探側も同様にGitHub Actionsの共有IPを405エラーでブロックすることを確認している。**
+   つまりPER/PBR・セクター相対評価・決算発表日は、GitHub Actions上の自動実行(スケジュール実行・
+   Actionsタブからの手動実行)では取得できず空欄になる。一方、あなた自身のPC(自宅等の通常のIP)
+   から実行した場合は問題なく取得できる。ニュース分析とテクニカル指標(移動平均・RSI・出来高・
+   日経平均比)はどちらの環境でも正常に動作する。
 4. `scripts/fetch_news_and_score.py` — 絞り込んだ銘柄についてGoogleニュースRSS(無料)で直近10日分の
    関連ニュースを検索し、
    - 発信元の信頼度(主要通信社・大手紙 > 専門メディア > 集約サイト > 発信元不明)
@@ -54,25 +60,36 @@
    GitHub Pages で公開すればスマホからも閲覧できる。各銘柄の行を開くとテクニカル・ファンダメンタルズの
    詳細と判断根拠、関連ニュース一覧が表示される。
 
-## ローカルでの実行方法
+## ローカルでの実行方法(PER/PBR等まで含めたフル分析)
+
+初回のみセットアップ:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-
-# 例: 株価1000円〜3000円の銘柄を検索
-python scripts/run_all.py --min-price 1000 --max-price 3000
 ```
 
-実行後、`data/scores.json` が更新されます。`docs/index.html` をブラウザで直接開くとローカルの
-`file://` 制約でJSON読み込みがブロックされる場合があるので、確認は以下のように簡易サーバー経由にしてください。
+その後は `scan.sh` で、価格帯を指定して「ニュース + テクニカル + PER/PBR/セクター相対評価」まで
+含めたフル分析を1コマンドで実行できる(自宅PCから実行するため、GitHub Actionsでは取得できない
+PER/PBR等もすべて取得される)。既定では値動きの大きい上位10件のみ深掘りするので、GitHub Actions
+での自動実行より手軽に回せる。
 
 ```bash
-cp data/*.json docs/data/
+./scan.sh 1000 3000       # 株価1000円〜3000円で上位10件を深掘り
+./scan.sh 1000 3000 20    # 件数を20件に変更したい場合
+```
+
+実行後、`data/scores.json` が更新され、`docs/data/` にもコピーされる。結果を見るには:
+
+```bash
 cd docs && python3 -m http.server 8000
 # ブラウザで http://localhost:8000 を開く
 ```
+
+この結果をスマホでも見られるようにしたい場合は `git add data docs/data && git commit -m "local scan" && git push`
+でそのままGitHub Pagesに反映できる(次にGitHub Actionsの自動実行が走ると、PER/PBR等は再び空欄に
+戻る点に注意。常にフル情報を保ちたい場合は、都度 `scan.sh` → push の運用にする)。
 
 ## GitHubで公開してスマホから見る
 
