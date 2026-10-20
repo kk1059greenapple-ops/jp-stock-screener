@@ -14,10 +14,20 @@ from datetime import datetime, timezone
 import pandas as pd
 import yfinance as yf
 
+try:
+    from curl_cffi import requests as curl_requests
+
+    # GitHub Actionsの共有IPからyfinanceの銘柄詳細(.get_info()/.calendar)を連続取得すると、
+    # Yahoo Finance側のクラム認証がbotとみなして429/401で弾くことを確認した(ローカルでは発生しない)。
+    # 実ブラウザのTLSフィンガープリントを模すことで回避する、yfinance公式が推奨する対策。
+    _SESSION = curl_requests.Session(impersonate="chrome")
+except ImportError:
+    _SESSION = None
+
 NIKKEI_TICKER = "^N225"
 HISTORY_CHUNK_SIZE = 100
 SLEEP_BETWEEN_HISTORY_CHUNKS = 1.5
-SLEEP_BETWEEN_INFO_CALLS = 0.3
+SLEEP_BETWEEN_INFO_CALLS = 0.5
 
 # 東証は2023年にPBR1倍割れ企業へ資本効率・株価を意識した経営改善を要請しており、
 # この水準を切っている銘柄は改善期待の思惑的な資金が入りやすいテーマ性がある(公表済みの制度的事実)。
@@ -62,6 +72,7 @@ def fetch_price_history(codes):
                 threads=True,
                 progress=False,
                 auto_adjust=False,
+                session=_SESSION,
             )
         except Exception as exc:  # noqa: BLE001
             print(f"history batch failed: {exc}")
@@ -226,10 +237,16 @@ def fundamentals_for(code, price=None):
     バージョンによって「比率(0.012)」と「%そのもの(1.2)」の混在が報告されており、
     そのまま使うと桁を誤る(例: 49%のような非現実的な値になる)ため採用しない。
     """
-    try:
-        ticker = yf.Ticker(f"{code}.T")
-        info = ticker.get_info()
-    except Exception:
+    ticker = yf.Ticker(f"{code}.T", session=_SESSION)
+    info = None
+    for attempt in range(2):
+        try:
+            info = ticker.get_info()
+            break
+        except Exception as exc:  # noqa: BLE001
+            print(f"fundamentals fetch failed for {code} (attempt {attempt + 1}): {exc}")
+            time.sleep(1.0)
+    if not info:
         return {}
 
     out = {}
