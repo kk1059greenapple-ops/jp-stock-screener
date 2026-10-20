@@ -144,6 +144,15 @@
   .tech-label { color: var(--muted); font-size: 0.68rem; }
   .tech-reasons { margin: 0.5rem 0 0; padding-left: 1.1rem; font-size: 0.78rem; color: var(--text); }
   .news-heading { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 0.3rem; }
+  .earnings-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    color: var(--badge-mid);
+    border: 1px solid var(--badge-mid);
+    border-radius: 6px;
+    padding: 0 0.3rem;
+    white-space: nowrap;
+  }
   .fake-flag {
     color: var(--badge-low);
     font-weight: 600;
@@ -331,7 +340,7 @@ function render() {
     const chgClass = s.change_pct > 0 ? "chg-up" : s.change_pct < 0 ? "chg-down" : "";
     tr.innerHTML = `
       <td>${s.code}</td>
-      <td>${s.name}</td>
+      <td>${s.name}${s.earnings_soon ? ' <span class="earnings-badge" title="決算発表が近く、値動きが大きくなりやすい時期です">📅決算間近</span>' : ""}</td>
       <td>${s.price.toLocaleString()}円</td>
       <td class="${chgClass}">${fmtPct(s.change_pct)}</td>
       <td class="pct">${s.expectation_pct.toFixed(1)}%</td>
@@ -402,10 +411,17 @@ function renderTechnicalPanel(stock) {
     if (tf.change_1m_pct != null) items.push(`<div class="tech-item"><span class="tech-label">1ヶ月騰落率</span>${fmtPct(tf.change_1m_pct)}</div>`);
     if (tf.change_3m_pct != null) items.push(`<div class="tech-item"><span class="tech-label">3ヶ月騰落率</span>${fmtPct(tf.change_3m_pct)}</div>`);
     if (tf.relative_strength_1m_vs_nikkei != null) items.push(`<div class="tech-item"><span class="tech-label">対日経平均(1ヶ月)</span>${fmtPct(tf.relative_strength_1m_vs_nikkei)}pt</div>`);
+    if (tf.volume_ratio_20d != null) items.push(`<div class="tech-item"><span class="tech-label">出来高(20日平均比)</span>${tf.volume_ratio_20d}倍</div>`);
   }
   if (fund.per != null) items.push(`<div class="tech-item"><span class="tech-label">PER</span>${fund.per}倍</div>`);
   if (fund.pbr != null) items.push(`<div class="tech-item"><span class="tech-label">PBR</span>${fund.pbr}倍</div>`);
   if (fund.dividend_yield_pct != null) items.push(`<div class="tech-item"><span class="tech-label">配当利回り</span>${fund.dividend_yield_pct}%</div>`);
+  if (fund.days_to_ex_dividend != null) items.push(`<div class="tech-item"><span class="tech-label">権利付き最終日まで</span>約${fund.days_to_ex_dividend}日(${fund.ex_dividend_date})</div>`);
+  if (fund.days_to_earnings != null) items.push(`<div class="tech-item"><span class="tech-label">次回決算発表まで</span>約${fund.days_to_earnings}日(${fund.next_earnings_date})</div>`);
+  const sr = stock.sector_relative;
+  if (sr && sr.per_percentile != null) {
+    items.push(`<div class="tech-item"><span class="tech-label">同業種内PER順位</span>${sr.sector}(${sr.peer_count}銘柄中) 下位${(sr.per_percentile * 100).toFixed(0)}%</div>`);
+  }
 
   const reasons = (stock.technical_reasons || []).map(r => `<li>${r}</li>`).join("");
 

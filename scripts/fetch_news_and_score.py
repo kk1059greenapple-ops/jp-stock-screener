@@ -19,10 +19,12 @@ from pathlib import Path
 
 from common import RAKUTEN_QUOTE_URL, credibility_for_source, is_clickbait, sentiment_for_text
 from technical_factors import (
+    EARNINGS_WARNING_DAYS,
     NIKKEI_TICKER,
     SLEEP_BETWEEN_INFO_CALLS,
     fetch_price_history,
     fundamentals_for,
+    sector_relative_valuation,
     technical_factors_for,
     technical_score,
 )
@@ -80,7 +82,7 @@ def fetch_news(query):
     return items
 
 
-def score_stock(stock, tf=None, fundamentals=None):
+def score_stock(stock, tf=None, fundamentals=None, sector_relative=None):
     query = f"{stock['name']} 株価"
     try:
         articles = fetch_news(query)
@@ -94,6 +96,8 @@ def score_stock(stock, tf=None, fundamentals=None):
             "technical": tf,
             "technical_reasons": [],
             "fundamentals": fundamentals or {},
+            "sector_relative": sector_relative,
+            "earnings_soon": False,
             "error": str(exc),
         }
 
@@ -130,7 +134,30 @@ def score_stock(stock, tf=None, fundamentals=None):
         corroboration_bonus -= 8
 
     momentum_component = max(-10.0, min(10.0, stock.get("change_pct", 0.0)))
-    tech_score, tech_reasons = technical_score(tf)
+    tech_score, tech_reasons = technical_score(tf, fundamentals)
+
+    # 同業種内でのPER相対順位(ファクター投資でいうバリューファクター)。
+    # 絶対水準のPERは業種によって適正レンジが異なるため、相対比較のみ採用し、
+    # サンプルが少ない(同業種3銘柄未満)場合は反映しない。
+    value_adjustment = 0.0
+    if sector_relative and sector_relative.get("per_percentile") is not None:
+        percentile = sector_relative["per_percentile"]
+        value_adjustment = (0.5 - percentile) * 10
+        sector_name = sector_relative.get("sector", "同業種")
+        peer_count = sector_relative.get("peer_count")
+        if percentile <= 0.3:
+            tech_reasons.append(f"{sector_name}内({peer_count}銘柄中)でPERが下位{int(percentile * 100)}%(割安)")
+        elif percentile >= 0.7:
+            tech_reasons.append(
+                f"{sector_name}内({peer_count}銘柄中)でPERが上位{int((1 - percentile) * 100)}%(割高)"
+            )
+
+    days_to_earnings = (fundamentals or {}).get("days_to_earnings")
+    earnings_soon = days_to_earnings is not None and 0 <= days_to_earnings <= EARNINGS_WARNING_DAYS
+    if earnings_soon:
+        tech_reasons.append(
+            f"決算発表まで約{days_to_earnings}日(発表内容次第で株価が大きく動く可能性。方向は不明)"
+        )
 
     expectation = (
         50
@@ -138,6 +165,7 @@ def score_stock(stock, tf=None, fundamentals=None):
         + corroboration_bonus
         + momentum_component * 0.3
         + tech_score * 20
+        + value_adjustment
     )
     expectation = max(0.0, min(100.0, expectation))
 
@@ -161,6 +189,8 @@ def score_stock(stock, tf=None, fundamentals=None):
         "technical_score": round(tech_score, 3),
         "technical_reasons": tech_reasons,
         "fundamentals": fundamentals or {},
+        "sector_relative": sector_relative,
+        "earnings_soon": earnings_soon,
     }
 
 
@@ -182,16 +212,33 @@ def main():
 
     print(f"fetching 1y price history for {len(stocks)} stocks + Nikkei 225 ...")
     history = fetch_price_history([s["code"] for s in stocks])
-    nikkei_closes = history.get(NIKKEI_TICKER)
+    nikkei_series = history.get(NIKKEI_TICKER)
+
+    # 1段階目: テクニカル・ファンダメンタルズを全銘柄分そろえる(セクター内相対評価に
+    # 同業種内の他銘柄のPERが必要なため、ニューススコアリングの前に一括収集する)。
+    print("computing technical factors and fundamentals ...")
+    tech_by_code = {}
+    fund_by_code = {}
+    for i, stock in enumerate(stocks, 1):
+        series = history.get(f"{stock['code']}.T")
+        tech_by_code[stock["code"]] = technical_factors_for(series, nikkei_series)
+        fund_by_code[stock["code"]] = fundamentals_for(stock["code"], price=stock.get("price"))
+        time.sleep(SLEEP_BETWEEN_INFO_CALLS)
+        if i % 25 == 0:
+            print(f"  ... {i}/{len(stocks)}")
+
+    sector_relative_by_code = sector_relative_valuation(
+        [{"code": s["code"], "sector": s.get("sector"), "fundamentals": fund_by_code[s["code"]]} for s in stocks]
+    )
 
     results = []
     for i, stock in enumerate(stocks, 1):
-        closes = history.get(f"{stock['code']}.T")
-        tf = technical_factors_for(closes, nikkei_closes)
-        fundamentals = fundamentals_for(stock["code"], price=stock.get("price"))
-        time.sleep(SLEEP_BETWEEN_INFO_CALLS)
-
-        info = score_stock(stock, tf=tf, fundamentals=fundamentals)
+        info = score_stock(
+            stock,
+            tf=tech_by_code[stock["code"]],
+            fundamentals=fund_by_code[stock["code"]],
+            sector_relative=sector_relative_by_code.get(stock["code"]),
+        )
         results.append({**stock, **info, "rakuten_url": RAKUTEN_QUOTE_URL.format(code=stock["code"])})
         print(f"[{i}/{len(stocks)}] {stock['code']} {stock['name']}: {info['expectation_pct']}%")
         time.sleep(SLEEP_BETWEEN_REQUESTS)
@@ -202,9 +249,10 @@ def main():
             {
                 "generated_at": datetime.now(timezone.utc).isoformat(),
                 "disclaimer": (
-                    "本スコアはニュース見出しの解析と、移動平均・RSI・日経平均との相対強さ等の"
-                    "テクニカル指標(過去の値動きのみに基づく客観データ)を組み合わせて機械的に算出した"
-                    "参考指標であり、投資助言ではありません。将来の株価を保証するものではなく、"
+                    "本スコアはニュース見出しの解析、移動平均・RSI・出来高・日経平均との相対強さ等の"
+                    "テクニカル指標(過去の値動きのみに基づく客観データ)、同業種内でのPER相対評価・"
+                    "PBR1倍割れ・配当権利確定日接近といったファクター投資/日本市場特有の要素を組み合わせて"
+                    "機械的に算出した参考指標であり、投資助言ではありません。将来の株価を保証するものではなく、"
                     "最終判断および楽天証券での取扱い確認はご自身で行ってください。"
                 ),
                 "stocks": results,
