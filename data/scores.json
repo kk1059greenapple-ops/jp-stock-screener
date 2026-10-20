@@ -1,7 +1,108 @@
 {
-  "generated_at": "2026-10-20T14:22:50.763327+00:00",
-  "disclaimer": "本スコアはニュース見出しの解析、移動平均・RSI・出来高・日経平均との相対強さ等のテクニカル指標(過去の値動きのみに基づく客観データ)、同業種内でのPER相対評価・PBR1倍割れ・配当権利確定日接近といったファクター投資/日本市場特有の要素を組み合わせて機械的に算出した参考指標であり、投資助言ではありません。将来の株価を保証するものではなく、最終判断および楽天証券での取扱い確認はご自身で行ってください。",
+  "generated_at": "2026-10-20T14:41:04.431912+00:00",
+  "disclaimer": "本スコアはニュース見出しの解析、移動平均・RSI・出来高・日経平均との相対強さ等のテクニカル指標(過去の値動きのみに基づく客観データ)、同業種内でのPER相対評価・PBR1倍割れといったファクター投資/日本市場特有の要素を組み合わせて機械的に算出した参考指標であり、投資助言ではありません。将来の株価を保証するものではなく、最終判断および楽天証券での取扱い確認はご自身で行ってください。",
   "stocks": [
+    {
+      "code": "6658",
+      "name": "シライ電子工業",
+      "market": "スタンダード（内国株式）",
+      "sector": "電気機器",
+      "price": 522.0,
+      "change_pct": 18.1,
+      "news_count": 7,
+      "expectation_pct": 75.5,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.371,
+      "news": [
+        {
+          "title": "【本日のおすすめ銘柄】シライ電子工業、27年3月期業績と配当予想を上方修正(フィスコ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbWhWT2pqUG54VlRYUXZYT0JhUHhGU0thNWd3a2N1czBLYXBhcDZQNGttcVFGY19tZDJqYWNIejZMeGQ2NGZDRVgteWtna2p6MmRWTFVZaGVzeDR6M0hhc2EteWxsQlZLakhmRWhtY2xLMVB0Nm5SLXd3WHVoTDNCSmM3WGJGclU?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-19T23:50:00+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "シライ電子工業－買い気配 不採算のSPET事業から撤退へ(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWURob1U0TERXSTFkUjdtYy1GQmVsNmVJeEtlaHJNTENFblB2MXpnY3dUYmhsNF9vWHpoWjY1ME1fczlVNnV1ZTF5ZFZ2ZUoxRjVJS0JDWXh2cjhLWW5iYTc5Tm9jUENzb3dKY2l5VnE1WExhaVlOMzlJZlBocy13T2lPMmMyekE?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T00:02:03+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "シライ電子工業－買い気配 通期営業益を上方修正 期末配当予想も増額〔DZH 個別株情報〕(時事通信) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbWVadjlKSzc4VERTems1OGxhbGo2dFludHNybEdTdkJoM0RFQ0hIWERXOTByUE0yU2JGZERSZDZKWVdaQVNGeG5NWkRRazdVQk1nRHAzbkpTZHE2Y016VVVjdmJDUF9RSTloSUxYS19KZnJtcDdDNHlKMjl0M1J3QzlBU2IyUlU?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T00:24:44+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "今朝の注目ニュース！ ★リネットＪ、ＳＥＨＩ、シライ電子などに注目！(株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZ3NfV3VJcldYQU5yV3hRN1VScDlWOGhfcnZudWgyekFUYWl3d0pCdUxaVGJ6andUV1VyMVpVSG40T1NkNGJqMkpkMVJ4b2JqZnExZDlGYTd2X0V2X3VWY0M1eFJ4OVdkLWxDVUtPMlRrWGVOeHJMVEdiZVBKa00xUmlDQTd5WWM?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-19T22:30:11+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "採れたて株価材料－Ｗｅｌｂｙ ＴＩＳＩと業務提携(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNRktXSnk4SkZ5Rm9Xd3ZRY0YxVGR3Tkk0ZWJuZkFwNzczTUQ3UmZSX01IMDlxdnJQQ0I5U01CU1J1YXBFM1p5RjJ4ZzVRekFfMmFaZldIV0dvSnFIamE3R2t4djdzUmNVNlRaRDlUWEFiYzRLTk1IZlJSdGV6RlpHdlNyWHFIVnc?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T07:31:02+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "【アナリスト評価】ＳＵＢＡＲＵ、レーティング中立を据置き、目標株価2,600円に引下げ（日系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPaUNBMmhqdmRyOHFXTzluZG9zYjQwamxmTHpHSjR3WEU0YllVRl9kM2t2S1dWSXg0QUFERHJFQm5CSTJPdkQ4Q0dZMzljemVZdXFtZEhsQ1NvVTAxaWM2VEdja2p2LWN6R0I2S0pCTGd1ZW54VFktRjIzZlpmUGw4bEkzd2lOSGc?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T09:45:27+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "シライ電子はＳ高カイ気配、２７年３月期業績・期末一括配当予想を引き上げ - ライブドアニュース",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9jcU5iZ1NYWG1ZYzZXc0ZaRmh1NEVnclA0MTZ0R0dqbGxDR3hNbnVTazUydVV0OUR0bVZNR3Nza1BPTElUSnNYTDFuZ1MzX3phelNjS05GM29ubFJTcDgw?oc=5",
+          "source": "ライブドアニュース",
+          "published": "2026-10-20T00:38:16+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        }
+      ],
+      "technical": {
+        "sma25": 452.8,
+        "sma75": 449.1,
+        "rsi14": 77.9,
+        "trend_signal": 1,
+        "range_pos_52w": 0.244,
+        "high_52w": 845.0,
+        "low_52w": 418.0,
+        "change_1m_pct": 14.22,
+        "change_3m_pct": 14.73,
+        "relative_strength_1m_vs_nikkei": 13.98,
+        "volume_ratio_20d": 2.35
+      },
+      "technical_score": 0.55,
+      "technical_reasons": [
+        "25日・75日移動平均線がともに上向き(上昇トレンド)",
+        "RSI14が77.9で買われすぎ水準(過熱・調整リスク)",
+        "直近1ヶ月の騰落率が日経平均を14.0pt上回っている",
+        "直近出来高が20日平均の2.35倍に増加(上昇の信頼性が高い)"
+      ],
+      "fundamentals": {},
+      "sector_relative": null,
+      "earnings_soon": false,
+      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=6658.T"
+    },
     {
       "code": "4616",
       "name": "川上塗料",
@@ -9,10 +110,10 @@
       "sector": "化学",
       "price": 4210.0,
       "change_pct": -6.76,
-      "news_count": 11,
-      "expectation_pct": 74.6,
+      "news_count": 12,
+      "expectation_pct": 73.7,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.291,
+      "confidence_score": 0.283,
       "news": [
         {
           "title": "「値上げを利益に変えた会社」だけを厳選20銘柄｜川上塗料(4616)のストップ高はまだ序章か？価格転嫁力ランキングで探す次の上方修正候補｜日本個別株デューデリジェンスセンター - note",
@@ -105,8 +206,17 @@
           "fake_news_risk": false
         },
         {
-          "title": "川上塗はＳ高カイ気配、通期業績予想を上方修正し期末一括配当を１０５円増額へ - ライブドアニュース",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE80dW9GcVFkR2pKMWRKOHdqZ3d6SjZ6aWQ0bllJQWVyQWh2MjN6YkhCM1ctX0d3UHltMXVZTVVVNTVpNWYxaS0wQVZCZlVxcDFVbElUNzMydGpNaWJLSXJr?oc=5",
+          "title": "ベイカレント、トレードワークス、サイゼリヤなど - ｄメニューニュース",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOZmRDN29xQ29YWU45cWVZcTA4QjNScVpoRmpNU190NlhaOWxPVDBCUW1NVzZsZzV4YnExb1lNcWJ0TDFjV3l0UzdvVGtmdk43blRtNGIzSnVfRkJiV0Y3NTBBSXJLOVNOeWRUTE5TSHBSRVpzbmcwcnV6eGdPRTUzNjNGRHJSSFHSAYwBQVVfeXFMTVFYWm94SC0yWnFLSmxYdzhyeThKNVdsejVfcVJrb2VxR284YmxKM0tXYjVRRWEtdDVodmFrZkQ5ODJuZXE4d3d0ZEl4TFE1MXc0blFtU1FZc3VGR3JwdGtGcFZfM0tsWTJvSVB2SU44M21qaVloeXNRaG9iUE45ZzNTRUNSRVFlSU9jS0k?oc=5",
+          "source": "ｄメニューニュース",
+          "published": "2026-10-19T06:53:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "川上塗はＳ高カイ気配、通期業績予想を上方修正し期末一括配当を１０５円増額へ (2026年10月16日掲載) - ライブドアニュース",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9iVzJocmNlVkZfLTEyZVFqU0FpZ0h4WmRrTnExRVM3SVFyUkVLa3FmaHdfbWJ0MVJYVzBES29RX1VuNGVXUndJcnM4Wnc0bTA5X244RmZCZ2ttY0RNUXc?oc=5",
           "source": "ライブドアニュース",
           "published": "2026-10-16T00:43:13+00:00",
           "credibility_tier": "低(発信元未確認)",
@@ -140,126 +250,16 @@
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=4616.T"
     },
     {
-      "code": "6658",
-      "name": "シライ電子工業",
-      "market": "スタンダード（内国株式）",
-      "sector": "電気機器",
-      "price": 522.0,
-      "change_pct": 18.1,
-      "news_count": 8,
-      "expectation_pct": 74.0,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.375,
-      "news": [
-        {
-          "title": "【本日のおすすめ銘柄】シライ電子工業、27年3月期業績と配当予想を上方修正(フィスコ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbWhWT2pqUG54VlRYUXZYT0JhUHhGU0thNWd3a2N1czBLYXBhcDZQNGttcVFGY19tZDJqYWNIejZMeGQ2NGZDRVgteWtna2p6MmRWTFVZaGVzeDR6M0hhc2EteWxsQlZLakhmRWhtY2xLMVB0Nm5SLXd3WHVoTDNCSmM3WGJGclU?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T23:50:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "シライ電子工業－買い気配 不採算のSPET事業から撤退へ(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWURob1U0TERXSTFkUjdtYy1GQmVsNmVJeEtlaHJNTENFblB2MXpnY3dUYmhsNF9vWHpoWjY1ME1fczlVNnV1ZTF5ZFZ2ZUoxRjVJS0JDWXh2cjhLWW5iYTc5Tm9jUENzb3dKY2l5VnE1WExhaVlOMzlJZlBocy13T2lPMmMyekE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T00:02:03+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "シライ電子工業－買い気配 通期営業益を上方修正 期末配当予想も増額〔DZH 個別株情報〕(時事通信) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbWVadjlKSzc4VERTems1OGxhbGo2dFludHNybEdTdkJoM0RFQ0hIWERXOTByUE0yU2JGZERSZDZKWVdaQVNGeG5NWkRRazdVQk1nRHAzbkpTZHE2Y016VVVjdmJDUF9RSTloSUxYS19KZnJtcDdDNHlKMjl0M1J3QzlBU2IyUlU?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T00:24:44+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "今朝の注目ニュース！ ★リネットＪ、ＳＥＨＩ、シライ電子などに注目！(株探ニュース) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZ3NfV3VJcldYQU5yV3hRN1VScDlWOGhfcnZudWgyekFUYWl3d0pCdUxaVGJ6andUV1VyMVpVSG40T1NkNGJqMkpkMVJ4b2JqZnExZDlGYTd2X0V2X3VWY0M1eFJ4OVdkLWxDVUtPMlRrWGVOeHJMVEdiZVBKa00xUmlDQTd5WWM?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T22:30:11+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "採れたて株価材料－Ｗｅｌｂｙ ＴＩＳＩと業務提携(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNRktXSnk4SkZ5Rm9Xd3ZRY0YxVGR3Tkk0ZWJuZkFwNzczTUQ3UmZSX01IMDlxdnJQQ0I5U01CU1J1YXBFM1p5RjJ4ZzVRekFfMmFaZldIV0dvSnFIamE3R2t4djdzUmNVNlRaRDlUWEFiYzRLTk1IZlJSdGV6RlpHdlNyWHFIVnc?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T07:31:02+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "【アナリスト評価】ＳＵＢＡＲＵ、レーティング中立を据置き、目標株価2,600円に引下げ（日系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPaUNBMmhqdmRyOHFXTzluZG9zYjQwamxmTHpHSjR3WEU0YllVRl9kM2t2S1dWSXg0QUFERHJFQm5CSTJPdkQ4Q0dZMzljemVZdXFtZEhsQ1NvVTAxaWM2VEdja2p2LWN6R0I2S0pCTGd1ZW54VFktRjIzZlpmUGw4bEkzd2lOSGc?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T09:45:27+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "【アナリスト評価】小野薬品工業、レーティング強気を継続、目標株価3,000円に引上げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPMjloR1NlRHQxR0ZUd1B4ZVg2UmFNS0FVSm81b2RDNFprNlRLcVh0SHhJWU1JUTRzb01OOTVjaktVZE8xSUVEdElDUm1yUjVieXA1blhuTktFd01IZ3F0LV9EWXdKSk1BamxNS3o5RkROYmdWYTAzSXAyNHBOT3dtOWdTcUlxUVE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-13T11:06:34+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "シライ電子はＳ高カイ気配、２７年３月期業績・期末一括配当予想を引き上げ - ライブドアニュース",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9jcU5iZ1NYWG1ZYzZXc0ZaRmh1NEVnclA0MTZ0R0dqbGxDR3hNbnVTazUydVV0OUR0bVZNR3Nza1BPTElUSnNYTDFuZ1MzX3phelNjS05GM29ubFJTcDgw?oc=5",
-          "source": "ライブドアニュース",
-          "published": "2026-10-20T00:38:16+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        }
-      ],
-      "technical": {
-        "sma25": 452.8,
-        "sma75": 449.1,
-        "rsi14": 77.9,
-        "trend_signal": 1,
-        "range_pos_52w": 0.244,
-        "high_52w": 845.0,
-        "low_52w": 418.0,
-        "change_1m_pct": 14.22,
-        "change_3m_pct": 14.73,
-        "relative_strength_1m_vs_nikkei": 13.98,
-        "volume_ratio_20d": 2.35
-      },
-      "technical_score": 0.55,
-      "technical_reasons": [
-        "25日・75日移動平均線がともに上向き(上昇トレンド)",
-        "RSI14が77.9で買われすぎ水準(過熱・調整リスク)",
-        "直近1ヶ月の騰落率が日経平均を14.0pt上回っている",
-        "直近出来高が20日平均の2.35倍に増加(上昇の信頼性が高い)"
-      ],
-      "fundamentals": {},
-      "sector_relative": null,
-      "earnings_soon": false,
-      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=6658.T"
-    },
-    {
       "code": "3556",
       "name": "リネットジャパングループ",
       "market": "グロース（内国株式）",
       "sector": "小売業",
       "price": 900.0,
       "change_pct": 20.0,
-      "news_count": 7,
-      "expectation_pct": 70.5,
+      "news_count": 6,
+      "expectation_pct": 69.2,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.421,
+      "confidence_score": 0.425,
       "news": [
         {
           "title": "リネットジャパンG株価がストップ高気配 資本業務提携を好感 - 日本経済新聞",
@@ -293,15 +293,6 @@
           "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5kYTkxeFFBa2NkbzE5OGd4MjIwUzM2Q2VQbkd0Wm1taXR6S2poODZRQkUzUVRfU1p2RXF6TlY0TzN0bGg2YXI2UzNxYmFIUUhoNmVVTkVfWGs?oc=5",
           "source": "Yahoo!ファイナンス",
           "published": "2026-10-15T21:48:30+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "JX金属と三菱商事の子会社、リネットジャパンと資本業務提携＝3．5億円出資(時事通信) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQU2tGNnlQekt0a2p4Sl9kYkFSZGZvTTZ3MmhtNlk2NktHbGdYNzQzZGVuQzg4TFFscElLMTF5Wk9ZbElaeEc5aTE3SFdQeWMyWVBSQWh6VWtFZFl1bnhPZnpYT0E5WHRsTk9nWkNVSVphcTVOdm5oVXhHbnFJOUJHR1NkMm8weGs?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T10:54:34+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
@@ -752,15 +743,6 @@
           "fake_news_risk": false
         },
         {
-          "title": "ＦＩＧ(株)【4392】：株つぶやき - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5saUI4NVY2ZkVtYi1kYTlDVUQ4WUJRZ0JtYktYQTJDRGxwanQxdVFpZ3Q4ZmllNHJjX2Z3RWdJN2JBZEtiV19jMGVaQjVhYU5mSmJDMVFXREk?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-17T15:33:02+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
           "title": "クラスターに物色人気集中、エプソンと資本・業務提携 - 株探",
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9aNmM4UUZBQXQxYWU2dlhKX0ZPOU5BYlMyY1EtZWFVVmkxRGQyeWVaNHZnYUpubG9ScU03dlNuYjJGcHJqd1dKODNLUEViOEhOeUFaeHg5eDFfMkV6a0pDbA?oc=5",
           "source": "株探",
@@ -839,6 +821,15 @@
           "published": "2026-10-16T03:00:00+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "サインポスト(株)【3996】：株つぶやき - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBWajZMY1c5dzhRQW11ek4wTExKcWdWMjhjb0R3WTdVcnpBUWlYa0dQUjI5T19MUUQxNzFlYXRrNGhtaUprOVVlR3lkZWVlSlVrWXV2WmFJcFg?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-15T03:23:15+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
           "fake_news_risk": false
         }
       ],
@@ -952,19 +943,19 @@
           "fake_news_risk": false
         },
         {
-          "title": "話題株ピックアップ【夕刊】（1）：良品計画、エレメンツ、サイゼリヤ - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iYUx1VDliTjVHVkZjYVRIbktFcVJWbnV6MTZWdUt5RTVxcDZoY01CalVCTGN1V2pnWFNsY3BPYUZIaEl0WE9vQ1FPVU9ZbW5Qb2ZYRGdCU2xzNDNrcGdTSg?oc=5",
+          "title": "ＱＰＳＨＤ、ＥＬＥＭＥＮＴＳ◆今日のフィスコ注目銘柄◆ - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5HZ2dRVG9pd254YjRMYVlhMmJheUpyU2pFWG43QmdvVVcwOUplT2FPM1d3R1NUSlZvaGpFMU0wY0EwV19hUUhHelB1c0xmVExLLWlXWkVPdl9nTDBiZ0NOeA?oc=5",
           "source": "株探",
-          "published": "2026-10-15T06:43:39+00:00",
+          "published": "2026-10-15T00:03:55+00:00",
           "credibility_tier": "中〜高(大手報道・専門メディア)",
           "credibility_weight": 0.7,
           "fake_news_risk": false
         },
         {
-          "title": "ＱＰＳＨＤ、ＥＬＥＭＥＮＴＳ◆今日のフィスコ注目銘柄◆ - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5HZ2dRVG9pd254YjRMYVlhMmJheUpyU2pFWG43QmdvVVcwOUplT2FPM1d3R1NUSlZvaGpFMU0wY0EwV19hUUhHelB1c0xmVExLLWlXWkVPdl9nTDBiZ0NOeA?oc=5",
+          "title": "話題株ピックアップ【夕刊】（1）：良品計画、エレメンツ、サイゼリヤ - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iYUx1VDliTjVHVkZjYVRIbktFcVJWbnV6MTZWdUt5RTVxcDZoY01CalVCTGN1V2pnWFNsY3BPYUZIaEl0WE9vQ1FPVU9ZbW5Qb2ZYRGdCU2xzNDNrcGdTSg?oc=5",
           "source": "株探",
-          "published": "2026-10-15T00:03:55+00:00",
+          "published": "2026-10-15T06:43:39+00:00",
           "credibility_tier": "中〜高(大手報道・専門メディア)",
           "credibility_weight": 0.7,
           "fake_news_risk": false
@@ -1018,20 +1009,11 @@
       "sector": "サービス業",
       "price": 479.0,
       "change_pct": -17.27,
-      "news_count": 8,
-      "expectation_pct": 64.3,
+      "news_count": 7,
+      "expectation_pct": 64.5,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.275,
+      "confidence_score": 0.286,
       "news": [
-        {
-          "title": "(株)ＴＷＯＳＴＯＮＥ＆Ｓｏｎｓ【7352】：決算情報 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zRlNFYjUxYjkxLWRWbWRUUkJYNFJESnJCQUdOaVdoWkhjZHhOOVowYlo5eThYWG8tdHRFZTVBN055SDNRcGJvOUU4TENjbnJ5WUtJdkNYakstZmpYY3NvMw?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-15T06:30:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
         {
           "title": "TWOSTONE＆Sons好業績予想でストップ高買い気配 - 四季報オンライン",
           "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1wU0YyMVBab2phR1J1ZDY0N2kzd2VVcTgxZ0Y3am1PSTdfcEtzSlM5M0s4TEFpZ2hKMUYwa3libk4waldRTnJRYjBqdVpOczdrRzJReUJhdw?oc=5",
@@ -1039,6 +1021,15 @@
           "published": "2026-10-16T01:31:19+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "(株)ＴＷＯＳＴＯＮＥ＆Ｓｏｎｓ【7352】：決算情報 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zRlNFYjUxYjkxLWRWbWRUUkJYNFJESnJCQUdOaVdoWkhjZHhOOVowYlo5eThYWG8tdHRFZTVBN055SDNRcGJvOUU4TENjbnJ5WUtJdkNYakstZmpYY3NvMw?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-15T06:30:00+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -1085,15 +1076,6 @@
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
-        },
-        {
-          "title": "東証グロース指数は4日ぶり反発、セキュリティ関連株に買い戻し - まぐまぐ",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rMlhrbE1Sbl9heXE4RDhveVZRY3l0RElPTXczbkhKem5lVU9CR2w5c1ZiRFhzR1F2VVJVenhpRk03bXJFcHc0NWc3T2htc2hoUGfSAVJBVV95cUxOazJYa2xNUm5fYXlxOEQ4b3lWUWN5dERJT013M25ISnpuZVVPQkdsOXNWYkRYc0dRdlVSVXp4aUZNN21yRXB3NDVnN09obXNoaFBn?oc=5",
-          "source": "まぐまぐ",
-          "published": "2026-10-16T09:01:31+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
         }
       ],
       "technical": {
@@ -1127,11 +1109,21 @@
       "sector": "小売業",
       "price": 1710.0,
       "change_pct": 9.9,
-      "news_count": 0,
+      "news_count": 1,
       "expectation_pct": 64.0,
-      "confidence": "低(関連ニュースなし)",
-      "confidence_score": 0.0,
-      "news": [],
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.4,
+      "news": [
+        {
+          "title": "本日の【ボリンジャー｜±３σブレイク】引け 上抜け＝ 17 銘柄 下抜け＝ 34 銘柄 (10月20日)(株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPYVI4eGt3UmstN054dHB1TkpWeE5ST1V5ODduLWlEeEVXWlEwMTNrMDIwNVQ3azN2eEhOeDRtd3JuenZtZEpIU2stVnRmckk2elRHZzFJVWladXhhaU0waDFSV0lNcUJ6MHZlU25QcW9PQmQ0Mk9wRFBuUkdPVkd6THlOOGFSUVE?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T06:45:35+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        }
+      ],
       "technical": {
         "sma25": 1535.7,
         "sma75": 1428.4,
@@ -1276,17 +1268,136 @@
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=4288.T"
     },
     {
+      "code": "4493",
+      "name": "サイバーセキュリティクラウド",
+      "market": "グロース（内国株式）",
+      "sector": "情報・通信業",
+      "price": 3020.0,
+      "change_pct": -9.58,
+      "news_count": 8,
+      "expectation_pct": 63.1,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.313,
+      "news": [
+        {
+          "title": "前週比96%高の急騰！サイバー攻撃から企業を守る「セキュリティ銘柄」が株価上昇率ランキング独占…今週の注目銘柄は？ - トウシル",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8zeXlZWnhmMHgzbXotMjFDRG5oVGxnZUhJY1NlLTlWTW80cnpHcDl6MUh4VnJNS2MxbVdFY2trRG1xTFV4RVFtNkVrdjlEX0ZvWXNtY1hTbGpNQQ?oc=5",
+          "source": "トウシル",
+          "published": "2026-10-13T07:19:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "ストップ高ラッシュの次に来るのはどこか？サイバーセキュリティ関連、本命から出遅れまで厳選20銘柄【完全保存版】 - note",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBiNVZIRlhFMkxobkVRRE9OQVV2NXZreGJQbi1RbXdYWDZoM0Y5Y0pDc3AtYXN0X1VaS3o1Y2xvR3pMQnFuc3FZLW5ZVUQ4eUFBU1F0QnBNd2Q1c3M?oc=5",
+          "source": "note",
+          "published": "2026-10-13T11:30:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "ＴＷＯＳＴＯＮＥ－大幅続伸 グループ会社がサイバーセキュリティクラウドと業務提携(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxORVBsdm9ZWHRHa0JlN3h1YjlXeU5Wa0NMSEQtakg0a3gzaVlWdzFpUTM1OS1xUGp0ck9Gd0M2WW1mLWg2QTUxYUd3dnhNcUhZQ3RxbWtvSW1pT1cxVlNNdHdmM0ZnX0ZnVlhEMkg4bEZtYWd1X3prRHRVRndFamlONkFhRWlRcjA?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-19T01:15:03+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "【サイバーセキュリティクラウド】株価予想 Xabi Alonso (mujNHAhjiD) - Unisba Media",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBmSlhVM1lIc05LTjNvQkgzLVB6S19LeDgxNmtUQ25fQTluSzdwdjFfUzZPX1V1aW8yX1dhVkV0Umd4QTFUZ1hrZ0ZZOC1Gci1DZEpxXzI1RlhtNU1nSzhMUTBuZ0VCZw?oc=5",
+          "source": "Unisba Media",
+          "published": "2026-10-17T22:13:34+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "サイバーセキュリティー関連が軒並み急騰、踏み上げ相場で想定外の上昇パフォーマンス相次ぐ - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Qa24yQkZOTkVUSENMY3Z4VXNuWEFZaG5MQTE0S0dpc2tSTjFjSW1HVDdlZzBoOXdnVEZZZjMzczNERFQtdGFoRnVzaFJHUVVkb2dubkEwTDdlRzVwczZiTw?oc=5",
+          "source": "株探",
+          "published": "2026-10-13T01:00:00+00:00",
+          "credibility_tier": "中〜高(大手報道・専門メディア)",
+          "credibility_weight": 0.7,
+          "fake_news_risk": false
+        },
+        {
+          "title": "(株)ＦＦＲＩセキュリティ【3692】：株つぶやき - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9uYk10TkQxZlo3V3BxbGpRWmlXNTRYa1ladnVoNi11M3BiVVE1Q09rMmhtU05scGpqR1FQM3htZHlMQ29OVEw4ZDhIYjBER0wzd1cxQkhYQXo?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-18T16:59:50+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "What Comes After the Limit-High Rush? 20 Carefully Selected Cybersecurity Stocks, from Favorites to Laggards [Complete Preservation Edition]｜日本個別株デューデリジェンスセンター - note",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBjZDhDb0xVWHc1ZDFYZXN1a1F4VmlYUE13RDcyZV9XWmpDek9LOXRJSVl4S1VSZkNmaTBIeU1GM1JRdnl6YW14dF9mcEl5ZTduOF9HQnZSZHdxZDhhVG1WMG9xZw?oc=5",
+          "source": "note",
+          "published": "2026-10-13T11:30:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "285Aキオクシア・9984ソフトバンク・4493サイバーセキュリティ・5246エレメンツ・3350メタプラ・4382HEROZなど前回の続き株価解説。四季報解説part16。(2026/10/13) Stm (UZjStwnKDG) - Unisba Media",
+          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQSXNYTndabTVzazh3Um5ZU29wUWVBRkxmWjM5T1ktRHQzckNHaWh1WTdRVkk3SzhxSHFjT0NIQVdZa011LWsydmhnRURoR291OG5OWklXMzl5YXhUUG9rSFRQOFdCLWZmSlhtbXNBYUQ0SEQxam1SU3NiOWNlU053ZlVtRVpLX2hpOV9PcA?oc=5",
+          "source": "Unisba Media",
+          "published": "2026-10-16T05:19:17+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        }
+      ],
+      "technical": {
+        "sma25": 2507.9,
+        "sma75": 2074.5,
+        "rsi14": 61.3,
+        "trend_signal": 1,
+        "range_pos_52w": 0.572,
+        "high_52w": 4180.0,
+        "low_52w": 1471.0,
+        "change_1m_pct": 57.46,
+        "change_3m_pct": 64.13,
+        "relative_strength_1m_vs_nikkei": 57.22,
+        "volume_ratio_20d": 0.36
+      },
+      "technical_score": 0.5,
+      "technical_reasons": [
+        "25日・75日移動平均線がともに上向き(上昇トレンド)",
+        "直近1ヶ月の騰落率が日経平均を57.2pt上回っている",
+        "直近出来高が20日平均の0.36倍と低調(上昇の持続性に注意)"
+      ],
+      "fundamentals": {},
+      "sector_relative": null,
+      "earnings_soon": false,
+      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=4493.T"
+    },
+    {
       "code": "9563",
       "name": "Ａｔｌａｓ　Ｔｅｃｈｎｏｌｏｇｉｅｓ",
       "market": "グロース（内国株式）",
       "sector": "サービス業",
       "price": 367.0,
       "change_pct": -6.62,
-      "news_count": 0,
+      "news_count": 1,
       "expectation_pct": 63.0,
-      "confidence": "低(関連ニュースなし)",
-      "confidence_score": 0.0,
-      "news": [],
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.4,
+      "news": [
+        {
+          "title": "東証グロース（大引け）＝値下がり優勢、ウェリタス、リネットＪがS高(株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPV0VKaGtZZTlrX2pndlFTOW5RR3JiSEh0WXBLSkxZTFdzdFVxUjVad3ZfcjNPREpCTFppOHQxOGhNRkJWb1g1N3d6clpIVXpUbmZ3OFFOVG5YSzc2VFdaUWdOMVBRRHVmYVU0eUVIODhwalNhVl9FRWlrNG5Ld1BqR3lROE40RkE?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T06:33:40+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        }
+      ],
       "technical": {
         "sma25": 352.3,
         "sma75": 331.7,
@@ -1475,124 +1586,6 @@
       "sector_relative": null,
       "earnings_soon": false,
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=4498.T"
-    },
-    {
-      "code": "4493",
-      "name": "サイバーセキュリティクラウド",
-      "market": "グロース（内国株式）",
-      "sector": "情報・通信業",
-      "price": 3020.0,
-      "change_pct": -9.58,
-      "news_count": 9,
-      "expectation_pct": 62.7,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.3,
-      "news": [
-        {
-          "title": "前週比96%高の急騰！サイバー攻撃から企業を守る「セキュリティ銘柄」が株価上昇率ランキング独占…今週の注目銘柄は？ - トウシル",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8zeXlZWnhmMHgzbXotMjFDRG5oVGxnZUhJY1NlLTlWTW80cnpHcDl6MUh4VnJNS2MxbVdFY2trRG1xTFV4RVFtNkVrdjlEX0ZvWXNtY1hTbGpNQQ?oc=5",
-          "source": "トウシル",
-          "published": "2026-10-13T07:19:00+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "ストップ高ラッシュの次に来るのはどこか？サイバーセキュリティ関連、本命から出遅れまで厳選20銘柄【完全保存版】 - note",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBiNVZIRlhFMkxobkVRRE9OQVV2NXZreGJQbi1RbXdYWDZoM0Y5Y0pDc3AtYXN0X1VaS3o1Y2xvR3pMQnFuc3FZLW5ZVUQ4eUFBU1F0QnBNd2Q1c3M?oc=5",
-          "source": "note",
-          "published": "2026-10-13T11:30:00+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "ＴＷＯＳＴＯＮＥ－大幅続伸 グループ会社がサイバーセキュリティクラウドと業務提携(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxORVBsdm9ZWHRHa0JlN3h1YjlXeU5Wa0NMSEQtakg0a3gzaVlWdzFpUTM1OS1xUGp0ck9Gd0M2WW1mLWg2QTUxYUd3dnhNcUhZQ3RxbWtvSW1pT1cxVlNNdHdmM0ZnX0ZnVlhEMkg4bEZtYWd1X3prRHRVRndFamlONkFhRWlRcjA?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T01:15:03+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "【サイバーセキュリティクラウド】株価予想 Xabi Alonso (mujNHAhjiD) - Unisba Media",
-          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBmSlhVM1lIc05LTjNvQkgzLVB6S19LeDgxNmtUQ25fQTluSzdwdjFfUzZPX1V1aW8yX1dhVkV0Umd4QTFUZ1hrZ0ZZOC1Gci1DZEpxXzI1RlhtNU1nSzhMUTBuZ0VCZw?oc=5",
-          "source": "Unisba Media",
-          "published": "2026-10-17T22:13:34+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "サイバーセキュリティー関連が軒並み急騰、踏み上げ相場で想定外の上昇パフォーマンス相次ぐ - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Qa24yQkZOTkVUSENMY3Z4VXNuWEFZaG5MQTE0S0dpc2tSTjFjSW1HVDdlZzBoOXdnVEZZZjMzczNERFQtdGFoRnVzaFJHUVVkb2dubkEwTDdlRzVwczZiTw?oc=5",
-          "source": "株探",
-          "published": "2026-10-13T01:00:00+00:00",
-          "credibility_tier": "中〜高(大手報道・専門メディア)",
-          "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
-          "title": "(株)ＦＦＲＩセキュリティ【3692】：株つぶやき - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9uYk10TkQxZlo3V3BxbGpRWmlXNTRYa1ladnVoNi11M3BiVVE1Q09rMmhtU05scGpqR1FQM3htZHlMQ29OVEw4ZDhIYjBER0wzd1cxQkhYQXo?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-18T16:59:50+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "What Comes After the Limit-High Rush? 20 Carefully Selected Cybersecurity Stocks, from Favorites to Laggards [Complete Preservation Edition]｜日本個別株デューデリジェンスセンター - note",
-          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBjZDhDb0xVWHc1ZDFYZXN1a1F4VmlYUE13RDcyZV9XWmpDek9LOXRJSVl4S1VSZkNmaTBIeU1GM1JRdnl6YW14dF9mcEl5ZTduOF9HQnZSZHdxZDhhVG1WMG9xZw?oc=5",
-          "source": "note",
-          "published": "2026-10-13T11:30:00+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "285Aキオクシア・9984ソフトバンク・4493サイバーセキュリティ・5246エレメンツ・3350メタプラ・4382HEROZなど前回の続き株価解説。四季報解説part16。(2026/10/13) Stm (UZjStwnKDG) - Unisba Media",
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQSXNYTndabTVzazh3Um5ZU29wUWVBRkxmWjM5T1ktRHQzckNHaWh1WTdRVkk3SzhxSHFjT0NIQVdZa011LWsydmhnRURoR291OG5OWklXMzl5YXhUUG9rSFRQOFdCLWZmSlhtbXNBYUQ0SEQxam1SU3NiOWNlU053ZlVtRVpLX2hpOV9PcA?oc=5",
-          "source": "Unisba Media",
-          "published": "2026-10-16T05:19:17+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "東証グロース指数は4日ぶり反発、セキュリティ関連株に買い戻し - まぐまぐ",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rMlhrbE1Sbl9heXE4RDhveVZRY3l0RElPTXczbkhKem5lVU9CR2w5c1ZiRFhzR1F2VVJVenhpRk03bXJFcHc0NWc3T2htc2hoUGfSAVJBVV95cUxOazJYa2xNUm5fYXlxOEQ4b3lWUWN5dERJT013M25ISnpuZVVPQkdsOXNWYkRYc0dRdlVSVXp4aUZNN21yRXB3NDVnN09obXNoaFBn?oc=5",
-          "source": "まぐまぐ",
-          "published": "2026-10-16T09:01:31+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        }
-      ],
-      "technical": {
-        "sma25": 2507.9,
-        "sma75": 2074.5,
-        "rsi14": 61.3,
-        "trend_signal": 1,
-        "range_pos_52w": 0.572,
-        "high_52w": 4180.0,
-        "low_52w": 1471.0,
-        "change_1m_pct": 57.46,
-        "change_3m_pct": 64.13,
-        "relative_strength_1m_vs_nikkei": 57.22,
-        "volume_ratio_20d": 0.36
-      },
-      "technical_score": 0.5,
-      "technical_reasons": [
-        "25日・75日移動平均線がともに上向き(上昇トレンド)",
-        "直近1ヶ月の騰落率が日経平均を57.2pt上回っている",
-        "直近出来高が20日平均の0.36倍と低調(上昇の持続性に注意)"
-      ],
-      "fundamentals": {},
-      "sector_relative": null,
-      "earnings_soon": false,
-      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=4493.T"
     },
     {
       "code": "6668",
@@ -2043,10 +2036,10 @@
       "sector": "情報・通信業",
       "price": 1569.0,
       "change_pct": -12.83,
-      "news_count": 7,
+      "news_count": 6,
       "expectation_pct": 59.0,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.357,
+      "confidence_score": 0.383,
       "news": [
         {
           "title": "Ｓ＆Ｊ(株)【5599】：現物信用売買内訳時系列 - Yahoo!ファイナンス",
@@ -2098,15 +2091,6 @@
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRWw5bmpBQlJ3OVVVb0xjSUowVDNBZllQTmlGQUl2WDVWY2ZnUUd4a216MzUybHlfdDFRUXJOTDRTWWl0NmxaeEswel8xcGx6cXBHWm45M2Y3bTktVjYybnk5Ung0MUVhN3Z4dGFCYncwald1bnZCWG95VVdVV1VYMFdaQzkxVGvSAYwBQVVfeXFMUDJmZ0FGQ283M3NZLUN0bFdpZnU4TUVUWjFMYzMwaUJJMEtGc1drOVBjWDVCejc0UERzTnlWWXBxQmNlQWZleE5rVjVpdVU1U19VRDJrNmE0Z1E2UDJkM1dGYVRRWGY2S3pPc0Vqdk5jODJKSG9RNEVnT3JfbnpqS2tfVllVQ1pjclZfanQ?oc=5",
           "source": "ｄメニューニュース",
           "published": "2026-10-13T22:15:00+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "東証グロース指数は4日ぶり反発、セキュリティ関連株に買い戻し - まぐまぐ",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rMlhrbE1Sbl9heXE4RDhveVZRY3l0RElPTXczbkhKem5lVU9CR2w5c1ZiRFhzR1F2VVJVenhpRk03bXJFcHc0NWc3T2htc2hoUGfSAVJBVV95cUxOazJYa2xNUm5fYXlxOEQ4b3lWUWN5dERJT013M25ISnpuZVVPQkdsOXNWYkRYc0dRdlVSVXp4aUZNN21yRXB3NDVnN09obXNoaFBn?oc=5",
-          "source": "まぐまぐ",
-          "published": "2026-10-16T09:01:31+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
@@ -2557,21 +2541,21 @@
           "fake_news_risk": false
         },
         {
-          "title": "(株)カウリス【153A】：決算情報 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8tUm54SVdXbnhpRXlVc1I4eWwzVndwTmZKbnE1N3cwVnloaUE0VC1KUjdpZ0Joczc2MTVLbTlTbEhTUUFrb1NwcFM4aENyTFNCV29ZRUV0Z2x1SDBhWnVJaA?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-16T07:00:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
           "title": "カウリス---大幅続落、信用取引規制を嫌気 - ｄメニューニュース",
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQU0lXMmVWRlhzdWNpVmVuN0l3RS0tYnZVWFk0cnI4S19JYTY4dDkxdEZuTzNsOGJCWl9OWHdpaHVEZkExMVdaeFBwS3dTNkNuREhiOEtkT1h6cndFMHJMOWcwZFNaNUg5ckI5ZTZSWldPaDdSYkVRWUNXcExfMXRXdzhxazh6cEHSAYwBQVVfeXFMUFZMYXlFclZTWnVUdER3S0w2d3o0Mm5QVlJHOThSMmxUZm56eDZPbWJfaHU0bTZCb2xXcmV4RlZ2TWxFYWNmMFJCbzRzV180bFpXWVB2NTF5Qk9Eekk3RXZFSVFrV1V3eDVlbWcwOXMwU19EYjl6dy1xcmxXWWF2TDktWGtROGpyckpXUU8?oc=5",
           "source": "ｄメニューニュース",
           "published": "2026-10-15T00:58:00+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "(株)カウリス【153A】：決算情報 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8tUm54SVdXbnhpRXlVc1I4eWwzVndwTmZKbnE1N3cwVnloaUE0VC1KUjdpZ0Joczc2MTVLbTlTbEhTUUFrb1NwcFM4aENyTFNCV29ZRUV0Z2x1SDBhWnVJaA?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T07:00:00+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -2693,21 +2677,21 @@
           "fake_news_risk": false
         },
         {
-          "title": "出来高変化率ランキング（14時台）～トレードワークス、TENTIALなどがランクイン(フィスコ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNY0ttMEh5cWY4c3hqV1BEcGtUemhpNFpXOTlfSnhac3pYSGltOUtXS04wSTFyUndMZTk1YVRUb3cwVnZLSDA2bWxDNElQS3cxQUdoTkZtVVV6VzBJaHN4OWlSRjJBWmxkcHdZbFZiU0txUzYtNkp3aUMxamVmcGd2SWw1bFVUSlk?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T05:52:50+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
           "title": "テンシャルは続急落、好決算発表も材料出尽くし売り続く - 株探",
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oRjZwM3J4dDNTbW9xUkdWVU94bUNId2dVb1ZGaHFmUW1FOXVBQ3BXU2s0cVBpSmNNdWk4UzRYMzlkOE05eHcwVUhLVWZYbGJLemtzMDVGU2U3blpoOEhVeg?oc=5",
           "source": "株探",
           "published": "2026-10-19T01:57:00+00:00",
           "credibility_tier": "中〜高(大手報道・専門メディア)",
           "credibility_weight": 0.7,
+          "fake_news_risk": false
+        },
+        {
+          "title": "出来高変化率ランキング（14時台）～トレードワークス、TENTIALなどがランクイン(フィスコ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNY0ttMEh5cWY4c3hqV1BEcGtUemhpNFpXOTlfSnhac3pYSGltOUtXS04wSTFyUndMZTk1YVRUb3cwVnZLSDA2bWxDNElQS3cxQUdoTkZtVVV6VzBJaHN4OWlSRjJBWmxkcHdZbFZiU0txUzYtNkp3aUMxamVmcGd2SWw1bFVUSlk?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-19T05:52:50+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -2768,10 +2752,10 @@
       "sector": "情報・通信業",
       "price": 287.0,
       "change_pct": -6.82,
-      "news_count": 8,
+      "news_count": 9,
       "expectation_pct": 53.0,
-      "confidence": "中",
-      "confidence_score": 0.475,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.444,
       "news": [
         {
           "title": "前日に「買われた株！」総ザライ ―本日につながる期待株は？― - 株探",
@@ -2843,6 +2827,15 @@
           "published": "2026-10-16T02:46:23+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "前日に「買われた株！」総ザライ -本日につながる期待株は？- - ライブドアニュース",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1ISGd5ckk2N3VrY3F1MlV1TW5ONXV1TDNRckdSLTU3NHphekUzYW9FRUhRR3VfSFhkaVQ5clFXZ1JBQTJnSEFDbHh4STg3aFBRUG81QzlRWHFHVVJHdG0w?oc=5",
+          "source": "ライブドアニュース",
+          "published": "2026-10-19T20:30:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
           "fake_news_risk": false
         }
       ],
@@ -3148,19 +3141,19 @@
           "fake_news_risk": false
         },
         {
-          "title": "前場コメント No.10 三菱電、クリングル、共栄セキュリ、シルバーライフ、Ｒｅｔｔｙ、ＧＭＯプライム(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcTcySFdHbXpBTXByMkxiMXlrRWJ4elluVk1vUWVWa21CdFRpdE9jbzZHTlBmdWV6Z1hMZ1Z4YTNBU0tkWE1hTHpPbEdOTUdpM2wycThuUHJKX3MxNzNlTXgtd0dNZE5UVVVNemtWX3dJRFBieVdqN0Zvb3haY1VudGQyejY4WDA?oc=5",
+          "title": "Ｒｅｔｔｙ(株)【7356】：企業情報（決算時期・代表者名・大株主情報・IR動画など） - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBkdEZQa2VmZV8ySXFvdDdnelRGWlZ3WjQ1ZzhlN0FLVnZDcnE3elg0UnhKOTdxWEZzWlU4UEMwOFp6a2Rid2RFX2ZaUnQ4aTlOVjJ6RWJQZnk4MnNpRzJ0RGI0UUhlV0NzVU82UE4wMHE2dFVLaWc?oc=5",
           "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T02:33:04+00:00",
+          "published": "2026-10-12T07:29:18+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
-          "title": "Ｒｅｔｔｙ(株)【7356】：企業情報（決算時期・代表者名・大株主情報・IR動画など） - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBkdEZQa2VmZV8ySXFvdDdnelRGWlZ3WjQ1ZzhlN0FLVnZDcnE3elg0UnhKOTdxWEZzWlU4UEMwOFp6a2Rid2RFX2ZaUnQ4aTlOVjJ6RWJQZnk4MnNpRzJ0RGI0UUhlV0NzVU82UE4wMHE2dFVLaWc?oc=5",
+          "title": "前場コメント No.10 三菱電、クリングル、共栄セキュリ、シルバーライフ、Ｒｅｔｔｙ、ＧＭＯプライム(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcTcySFdHbXpBTXByMkxiMXlrRWJ4elluVk1vUWVWa21CdFRpdE9jbzZHTlBmdWV6Z1hMZ1Z4YTNBU0tkWE1hTHpPbEdOTUdpM2wycThuUHJKX3MxNzNlTXgtd0dNZE5UVVVNemtWX3dJRFBieVdqN0Zvb3haY1VudGQyejY4WDA?oc=5",
           "source": "Yahoo!ファイナンス",
-          "published": "2026-10-12T07:29:18+00:00",
+          "published": "2026-10-19T02:33:04+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
@@ -4147,21 +4140,21 @@
       "confidence_score": 0.55,
       "news": [
         {
-          "title": "本日の【上場来高値更新】 マクニカＨＤ、ハピネットなど31銘柄 - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBzYTNkVkNxWEg1aXV0WHkwYmV2bnZ0OFQ1N2tkdjRlR0NXLV80Sm15OUlxY1AxcGR4VUpyQTdvNmYwMXk3RlNKcFVubnJUWGw2V290clVqQWlyR3lRN0dWUw?oc=5",
-          "source": "株探",
-          "published": "2026-10-14T11:10:00+00:00",
-          "credibility_tier": "中〜高(大手報道・専門メディア)",
-          "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
           "title": "マクニカHD、統合報告書を通じて対話を強化 半導体・サイバーセキュリティを強化し、サービス・ソリューション型へ変革 - みんかぶ",
           "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBWSURKSmlYU1N0M1NMVFMyQkFHaWl2SEgyZlZnQm1lZU5EU2JUc3VMTXJnOUpNN3k4cXY1RkJ6WklfUUhpTFE?oc=5",
           "source": "みんかぶ",
           "published": "2026-10-13T04:00:02+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "本日の【上場来高値更新】 マクニカＨＤ、ハピネットなど31銘柄 - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBzYTNkVkNxWEg1aXV0WHkwYmV2bnZ0OFQ1N2tkdjRlR0NXLV80Sm15OUlxY1AxcGR4VUpyQTdvNmYwMXk3RlNKcFVubnJUWGw2V290clVqQWlyR3lRN0dWUw?oc=5",
+          "source": "株探",
+          "published": "2026-10-14T11:10:00+00:00",
+          "credibility_tier": "中〜高(大手報道・専門メディア)",
+          "credibility_weight": 0.7,
           "fake_news_risk": false
         }
       ],
@@ -4194,10 +4187,10 @@
       "sector": "医薬品",
       "price": 32.0,
       "change_pct": 10.34,
-      "news_count": 3,
+      "news_count": 2,
       "expectation_pct": 50.3,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.267,
+      "confidence_score": 0.3,
       "news": [
         {
           "title": "後場コメント No.1 三菱重、モダリス、ＩＤＯＭ、アクシージア、イクヨ、水戸証(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
@@ -4213,15 +4206,6 @@
           "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNbnhUVXBqLXVXcmEwZi04VnpZbHV3a3AzZmRvV2t5SkRqUjdxR3N4YjI1QzJ5dV9QVHdFWmhwTGJTMjI5ZmZrQ2h5aFhLdTVFLVFhdXYxaEotdkFGak9ZWVJCYUFKSUxVRkRuOVlJbnRlZ093NTZBcFhvWkFEY2RGenZjdTZfeEdVbkdKTGNPRFp4NlRfeFFtX0NhSk9iYm5TaDJIblR3eUFvY041Z0hJM3lxdXM?oc=5",
           "source": "東奥日報社",
           "published": "2026-10-11T19:55:21+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "銘柄チェック～サイバトラス、サンバイオ、フリー、TKP、ウェリタス、リネットJ、モダリス、ユミルリンク - 日経CNBC online",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBmMDZqa0tKU3F3Q0pkV09zSWFaY1d4VkNXSjB5NGdGS2FlRU40VFlPTGQ3MUV1N1J0S0MzY1BqaG5KVDhUa3dvY000Tmg3YmFqUk9aMw?oc=5",
-          "source": "日経CNBC online",
-          "published": "2026-10-20T06:21:23+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
@@ -4476,10 +4460,10 @@
       "sector": "情報・通信業",
       "price": 1164.0,
       "change_pct": -8.27,
-      "news_count": 10,
-      "expectation_pct": 48.7,
-      "confidence": "中",
-      "confidence_score": 0.45,
+      "news_count": 12,
+      "expectation_pct": 48.5,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.425,
       "news": [
         {
           "title": "寄前【板状況】＜材料株＞動向 【買いトップ】ウェリタス 【売りトップ】ユミルリンク [08:35](株探ニュース) - Yahoo!ファイナンス",
@@ -4497,15 +4481,6 @@
           "published": "2026-10-20T12:30:12+00:00",
           "credibility_tier": "中〜高(大手報道・専門メディア)",
           "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
-          "title": "前場コメント No.2 ＧＭＯＧＳＨＤ、南陽、ナレルＧ、ＳＥＨ＆Ｉ、ユミルリンク、湖北工業(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQNFp6ZDc2bDB2S3ZTWWg2WkVpbEQ4ZmFwaDBkajc2ZE1MMVI5YlJWazNQU2M2WnZlRm9BMlhPemtCSFcxaTVoSWRMczktNXBZa2xIdWtlcXJRQnk0NkYtVEt5bTFjV3RUTjc0Q2dvMUxfOFpubGgzREtkaTRlSHZoMkdGalNMUXM?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T02:34:03+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -4527,21 +4502,30 @@
           "fake_news_risk": false
         },
         {
+          "title": "ユミルリンク---コクーと資本業務提携、SMB向けMAツールの全国普及を推進 - ｄメニューニュース",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQR3ZfS0pkTGpvZEtUZ3lPb2doSkpDaC0tcS14eFMxZHdXSFNUTUtPSEpGQnIyenpCTjRQV3pWT3hIRHRlUGo3MEd1bDI0NzdiS1hCNmJVZjZaUXc4cnY1SGxCalBKZXBKTVRJTklPNnpWT1U1cXBxaDNodWxaSXBvZVpNRktONlnSAYwBQVVfeXFMUE5lanBpNUJsMDlsYU12YTN3ZmRXOGtWX2E3NVFNUW9CekpJMFNKanNTWjhoMm0xanY0a09OSEkyVWt5aDZyS2dmS1h2M3FNcjJ2WHYzYzN5M1pGbjB3dE9HWE55YWVINThyaFZ4TEZMUTI4UVAxbEN0ejdMN3dBblpGVFA3SEYzeXd6ems?oc=5",
+          "source": "ｄメニューニュース",
+          "published": "2026-10-15T04:39:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "前場コメント No.2 ＧＭＯＧＳＨＤ、南陽、ナレルＧ、ＳＥＨ＆Ｉ、ユミルリンク、湖北工業(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQNFp6ZDc2bDB2S3ZTWWg2WkVpbEQ4ZmFwaDBkajc2ZE1MMVI5YlJWazNQU2M2WnZlRm9BMlhPemtCSFcxaTVoSWRMczktNXBZa2xIdWtlcXJRQnk0NkYtVEt5bTFjV3RUTjc0Q2dvMUxfOFpubGgzREtkaTRlSHZoMkdGalNMUXM?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T02:34:03+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
           "title": "出来高変化率ランキング（14時台）～ユミルリンク、インバウンドなどがランクイン - 株探",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9fY2ZYN1BXNldnMUFUbVdCcGV0b0lHTHlPOTNhNGd4SkFENWl2Y3Zzd2hDM2pwN3FOdFVrSk96UFlESnFYejRxV0hnM2RCMzY4R0E?oc=5",
           "source": "株探",
           "published": "2026-10-16T05:52:41+00:00",
           "credibility_tier": "中〜高(大手報道・専門メディア)",
           "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
-          "title": "ユミルリンク---コクーと資本業務提携、SMB向けMAツールの全国普及を推進(フィスコ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxObmVWVkY0QUtDRmViQ3NWbkNTcnpPcmFmYlJwaDViUHduMDRPNG9tcnoyd3lXREVkd01BRHBndjJEUnpNSl8zdllfUnR5dUNKY1dTNzB1ZTlKMUR1Z2RnTUtWcU5UWjNWcmg4VTk2T2FhNm03QTROZnZFTnBoVFdSN0hNUlBFeUE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-15T04:39:03+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -4554,19 +4538,37 @@
           "fake_news_risk": false
         },
         {
-          "title": "日経平均株価、一時５００円超下落…６万４３００円台で推移 - ｄメニューニュース",
-          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQNWJvNi1uVEw5M3E0WG4tMXo3cmhRdEFwYm94YV9tV20zRXFQbUFjWi1zenVCbVEyZXFOVUxwVE15aUhfZHJQcm83NGsyc2lkcGxkSGluRmFBX2tXUlFPZHNtalpXMjl0ZWxZSEw4dTgyUDhoalluY3RpMGR1R1ZBODRJMFJpdWxvTnBmZ2lPZWlnWTcxVjRFdlhic1EzM3RhbU5VMDZ6Z281NXhOcm0zazZnRGlPeWFRREVvSDAzRkVGR0NqZ2tveEtzemtTT1l5UE5EaWRsMjMzT1FD0gGMAUFVX3lxTE9hRFZtRWlmN2RDQ0JDbHVvY3kxRXFaVmM0V3MtOW5fQ2c4eGx1VGJXN0t0bnJPRUZEZ1IxekpqNENIUWR4aHFFLVZWWUJxOU5pdUVJMGxtaFVJSHNnVDdEV2ZqTUotenRYMk5Sekc4SElvbVpvUGY3cHpBSHVKUmoyYWJpb19XSjFtTTdT?oc=5",
-          "source": "ｄメニューニュース",
-          "published": "2026-10-20T00:13:00+00:00",
+          "title": "採れたて株価材料 ホットリンク 東証スタンダード市場へ市場区分変更承認(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNZ29iMTZOS19JNjZ2RXotZXI0MnVFeE9ULWswbnFHQ3k5QVFTOWlCTTJjbUxIeDlGaHdEQ1Nlakx5MGtrckQ5aXVpbG05bjQyM1VLamIxQlFuN0ZqY09ielN6Y2ZrekxMcURfUW1ySEJ6UkNwVlBXN2k0NlpzOXBwWlBueVpfTzQ?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T07:25:03+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "寄前【板状況】＜材料株＞動向 【買いトップ】ＰＲＴＩＭＥ 【売りトップ】ＩＤＯＭ [08:35](株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNc29Eb2YzMFYyQnNtMXI2X002b1NrV2hvVW16MFRSUmhJc19BZ3JXYkI0cWw5RlhmR2NQX081NFlhVjFVVGZsWUtHMXZ5SEk5Vkw4NVV4UzBlbnBtTlgwWDdzRlBRc3hVcER3Q1ZCQXVyRS1iRVI4bWJCbGJyVi1WWVNvU3lzdzA?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-14T23:50:29+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "ユミルリンク、人財×デジタル事業展開のコクーと資本業務提携 - マールオンライン",
+          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1vRTA4eEMyVlhiUWdFUjNaZXdVNHBZeUFnMjNTZy1BVmhibnVNS3hrdXVvQ3NNYzZDbWhFSmxFLVFzNGlJVHNrRU9RU0tIQ1dqSmhYYkRsdw?oc=5",
+          "source": "マールオンライン",
+          "published": "2026-10-14T06:59:00+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
         },
         {
-          "title": "日経平均株価　一時1200円余り値上がり　7営業日ぶり上昇　AI・半導体関連銘柄に買い戻し - ｄメニューニュース",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5NMm1mUFBvc3JrRzFXX2QyaWN6WWt3a3o3NE9DUGRraUlMWjVRRU5nTGJUYURtZEJ0V3Itc25SQktzeTdXMXdmZmxqOHlxdlVqd2p1VklWai03bEJLcUVaQXBFWjJObGJUTE1PWTFlVUtxUdIBd0FVX3lxTE1ETTcyRlJLY1BmblVUM2FtNEZZODNBd21TSi1VbmNjMHB5eExqYzk2eVBkRDB1dVpQRmRLWHNmT09Tc2ZxdG1uclZfUDR0NUkwMEttaGNTLWRXRHBRMFpWUEl5eW9UYldnenN2N2JwdGVzV0MtclJv?oc=5",
+          "title": "日経平均株価、一時５００円超下落…６万４３００円台で推移 - ｄメニューニュース",
+          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQNWJvNi1uVEw5M3E0WG4tMXo3cmhRdEFwYm94YV9tV20zRXFQbUFjWi1zenVCbVEyZXFOVUxwVE15aUhfZHJQcm83NGsyc2lkcGxkSGluRmFBX2tXUlFPZHNtalpXMjl0ZWxZSEw4dTgyUDhoalluY3RpMGR1R1ZBODRJMFJpdWxvTnBmZ2lPZWlnWTcxVjRFdlhic1EzM3RhbU5VMDZ6Z281NXhOcm0zazZnRGlPeWFRREVvSDAzRkVGR0NqZ2tveEtzemtTT1l5UE5EaWRsMjMzT1FD0gGMAUFVX3lxTE9hRFZtRWlmN2RDQ0JDbHVvY3kxRXFaVmM0V3MtOW5fQ2c4eGx1VGJXN0t0bnJPRUZEZ1IxekpqNENIUWR4aHFFLVZWWUJxOU5pdUVJMGxtaFVJSHNnVDdEV2ZqTUotenRYMk5Sekc4SElvbVpvUGY3cHpBSHVKUmoyYWJpb19XSjFtTTdT?oc=5",
           "source": "ｄメニューニュース",
-          "published": "2026-10-16T08:11:00+00:00",
+          "published": "2026-10-20T00:13:00+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
@@ -5030,6 +5032,99 @@
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=6524.T"
     },
     {
+      "code": "634A",
+      "name": "レイヤード",
+      "market": "スタンダード（内国株式）",
+      "sector": "情報・通信業",
+      "price": 2430.0,
+      "change_pct": -13.21,
+      "news_count": 8,
+      "expectation_pct": 47.0,
+      "confidence": "中",
+      "confidence_score": 0.469,
+      "news": [
+        {
+          "title": "(株)レイヤード【634A】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rQ3Y1SVo5dlQzX1lzV19TQzFxczhhNlhEUTdsTm81VnByV013UTRjS1p6SFdXSHpNWEFFOVRpeTl2VTVERVZ4UmF5OW5Zc0dvcnc?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T13:03:27+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "レイヤード（634A）のIPO初値予想と上場概要紹介 - かぶリッジ",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5tcVFLQWZTbHdFcTVzVmJnOWxqODdzd1pCc1NaQmtkWGwyM1c5WlJoaTFsOGgxVkZqeFBTTWdya2Y4MUZHeHNxMm43OE5PWVRfREN4c0laMFg?oc=5",
+          "source": "かぶリッジ",
+          "published": "2026-10-20T06:54:18+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "寄前【成行注文】買い越しランキング 東武住販、サイゼリヤ、レイヤード [08:36](株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSGhrcmtqZ25QMWkxZlk3eUJCZzRVUlVCa1B6Z2dpZS1tUTU4LUpLaEhmZkRXWVFQUUtscXA4dEkzRW1sY3k5dGI4eXpneW9sLUpBaXpFNWx6ZmdwSnp6bkxWY004TWFwbWl4NUxlVG9kR1ZZNWtmWjl0M1gyZHBiVXBVZEU2Mms?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-14T23:51:51+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "＜特別気配＞ 東武住販、レイヤード、ＦＩＧが買い気配 - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBFc1VSYlduZC1kVDdEdEVrR0M1WTdFRW45Z1VrcFozdUp2M0tGU1JGdXlwbE1EXzNGd0RuT0N3T3BWYm5yR05sLWNpSjAyaVFzbXdPVXdjeDBCZEQ3NEJqZA?oc=5",
+          "source": "株探",
+          "published": "2026-10-14T00:03:43+00:00",
+          "credibility_tier": "中〜高(大手報道・専門メディア)",
+          "credibility_weight": 0.7,
+          "fake_news_risk": false
+        },
+        {
+          "title": "レイヤード[634A]：第三者割当増資の結果に関するお知らせ 2026年10月16日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE12Um5vdGpVVFN3MGhFSDFjVFE4MnJqQUxzdEhjek9xUVppRDJVTmFPR2x4bUlmZWVpb3IxR2dlSWtTQ1BWS282VTExR05WT3lhOW1FYmZURGRUdGVldVFHOXhMS0hiZXRhbkE?oc=5",
+          "source": "日本経済新聞",
+          "published": "2026-10-16T10:30:00+00:00",
+          "credibility_tier": "高(主要通信社・公式開示)",
+          "credibility_weight": 0.95,
+          "fake_news_risk": false
+        },
+        {
+          "title": "寄前【成行注文】買い越しランキング 東武住販、サイゼリヤ、レイヤード [08:36] - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBDY180WjJvY0pFUUpqemVhZy1ySk5nVXBfQkhwOUlqclZQS0dIUldUY200NURZVjRfSnVvNVU0OFY1MGJRcG9QQkxlUFJQQ0tJTVA2bHd2UjRCMzJuRFpWZA?oc=5",
+          "source": "株探",
+          "published": "2026-10-14T23:36:46+00:00",
+          "credibility_tier": "中〜高(大手報道・専門メディア)",
+          "credibility_weight": 0.7,
+          "fake_news_risk": false
+        },
+        {
+          "title": "前日に動いた銘柄 part2レイヤード、東洋電機製造、プログリットなど - ｄメニューニュース",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSjE3RHl2QXlWSDB2b0NjU2t1WnRBT2NpSG9BTGJYWEE1RzlZcEdJVG1yelo3TVREZXcta1NySHdIdU5aeUNiTl83LXVPNEI0eU13UHI0NzhBdU53ZzRlQUVJMG5PUkQxODRpOGdwelkzUWFVUHA1UzJFZFI5OG5CbkpjT0VIZmfSAYwBQVVfeXFMTW5mZjBNT3ZneENoU09PeWNGdkhDX1hZWkUzekR3MjRLNW0wd24xVHBQd2pOVzFQaE9sdlJVTVpWOXJ4eVIxdVI4ZFRYMERoejB1M3ROYWliWW9UNjBnQUEydFpZYWNDV0UxekxDaDM3SEZmT0d1T0JVQ2NCOEJiSVdMSEwtY0QxZ2IxWkw?oc=5",
+          "source": "ｄメニューニュース",
+          "published": "2026-10-15T22:32:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "【注目トピックス 日本株】前日に動いた銘柄 part2レイヤード、ビーエイブル、ショーケースなど - マネーポストWEB",
+          "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE44b3RoZjB1Zy13RVh5aldUYy1TSWF1Y2VJVDZjS1o2dWxHdW9ic09fNGgwVVlMZTFNa2poUzc4YVJySW9VY1ZR?oc=5",
+          "source": "マネーポストWEB",
+          "published": "2026-10-12T22:32:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        }
+      ],
+      "technical": null,
+      "technical_score": 0.0,
+      "technical_reasons": [],
+      "fundamentals": {},
+      "sector_relative": null,
+      "earnings_soon": false,
+      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=634A.T"
+    },
+    {
       "code": "2681",
       "name": "ゲオホールディングス",
       "market": "プライム（内国株式）",
@@ -5294,11 +5389,21 @@
       "sector": "サービス業",
       "price": 717.0,
       "change_pct": -7.0,
-      "news_count": 0,
+      "news_count": 1,
       "expectation_pct": 46.9,
-      "confidence": "低(関連ニュースなし)",
-      "confidence_score": 0.0,
-      "news": [],
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.2,
+      "news": [
+        {
+          "title": "ハンセンテック指数、2年で出発点に逆戻り CICCが香港株リターン低迷の要因を分析 - BigGo ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1FSlZ4V2ItbDVGSUQtX2oxMkxzQTRMZV96dG9QMGVwaEcwVkNBUV9jUEk5VE4wTTh4WXNueU96TnNlU0hFUWRIZEJTZlF6dXFXX0VhX1VxNjBuQ0FFZkd2ZW1RbmdzcVVUeTRzWDlJdUozbmZN?oc=5",
+          "source": "BigGo ファイナンス",
+          "published": "2026-10-13T03:25:00+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        }
+      ],
       "technical": {
         "sma25": 820.7,
         "sma75": 705.9,
@@ -5428,39 +5533,11 @@
       "sector": "銀行業",
       "price": 3780.0,
       "change_pct": -7.24,
-      "news_count": 3,
+      "news_count": 0,
       "expectation_pct": 46.8,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.267,
-      "news": [
-        {
-          "title": "四国銀行（8387）の株主優待｜国内株式 - SBI証券",
-          "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQUXRNVGVQc2Y1QnNUWk9iMGI1X29nNjhnZ2xDUFhXUUJYSDdhOXR6QUFlRlcydjlpT3R0WTdGR0dOTW1mQkJpeVhtU1pBcnZhbzhHYTc3UlBYczRsM0xMWVFfLThETzBjX3pBUmRsZks5cG5YWFZqcFk4d253eVFUVFFCYVRBSnFXa25pZXhZOXF3cXI1X0ZhVXluZlp0YlZGUzRLMGJmcDhRcElUcXRsaFExN3F1Z0ozejNubEo2R0NoWldNeGhpZXllTWdnR2lCTVp3dVpmQWZUN2tHVG5SbTFYU1lacUcxbGc0?oc=5",
-          "source": "SBI証券",
-          "published": "2026-10-16T12:03:30+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "(株)百十四銀行【8386】：株価・株式情報 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5hbTVvcXZrMld0dG9NWVZaSl8xcE9oX3VZRV9oVmVPSWw0ajQxMWV1N1dpYWZpbE9sTEJ5dzJ0b19kaDNOMjM4UGFxU0FMc3NXcUE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-15T07:00:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "マーケット速報 - 北國新聞",
-          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObklnb015dEFGczBoZzFXWEJ2NktRbzdFV1lySTlRWlJXTWlXenBGQU5JM3hWLU0xOEU3LXRJemhLRW5CaTZSakxlb1lpMjlyVXpZUDRmQnpQZFpDTXpZUDV5eUxsZjhFamEwRGVjMGhOMVk2X193Nks0eF9RdmV3QnExRVZ5QkMxME11NmRxTFZhYW9WT2psZ3h2Nm0yenJTSkIwMmNPU19zZ3JESVI1SzZnTkE?oc=5",
-          "source": "北國新聞",
-          "published": "2026-10-16T00:16:41+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        }
-      ],
+      "confidence": "低(関連ニュースなし)",
+      "confidence_score": 0.0,
+      "news": [],
       "technical": {
         "sma25": 4360.0,
         "sma75": 3719.1,
@@ -6202,21 +6279,11 @@
       "sector": "機械",
       "price": 3625.0,
       "change_pct": -6.93,
-      "news_count": 1,
+      "news_count": 0,
       "expectation_pct": 44.8,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.2,
-      "news": [
-        {
-          "title": "マーケット速報 - 北國新聞",
-          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdXBPcXRNRk8wR0ItcVRucG9IV2dPMDNkNHB1WTJPR21nNkhrQnptTER4YUxGNW9vS3Q4RG9jc3d6Y3cxZ0R2dXJSemk2NXRWcE5YMk5GUUxCSFU0TUZvN3RXYmQ2MjFXV2NUSjNTby1nWjZDMG9sRGNaVWdBWk1BU3R6bUFiTlkzUmN0dmJ2dTd2QWZtQTBGN0toVEkxTS1RWWlxZkFFeHdSSmNMMzYxZEJEVGs?oc=5",
-          "source": "北國新聞",
-          "published": "2026-10-14T01:34:50+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        }
-      ],
+      "confidence": "低(関連ニュースなし)",
+      "confidence_score": 0.0,
+      "news": [],
       "technical": {
         "sma25": 3913.2,
         "sma75": 4050.5,
@@ -7135,10 +7202,10 @@
       "sector": "電気機器",
       "price": 20200.0,
       "change_pct": -7.51,
-      "news_count": 5,
+      "news_count": 4,
       "expectation_pct": 42.7,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.28,
+      "confidence_score": 0.3,
       "news": [
         {
           "title": "(株)メイコー【6787】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
@@ -7163,15 +7230,6 @@
           "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9zd2ttZFlxZUZ3S2JwWEdkX0hFZTFSUW1oN1dER3l0aUg0d3FjVGNRRDlmc3U0RlA0OHBHTWRQWl8tNy1HQmsyT0JfYkkyZjZXTFUyRXVQa29UNUdNYnpfMXZJWdIBaEFVX3lxTE1LOTlmQ1NwdDk4WEJ6TnYwQmp1WWp0Q3h1RWdaSktjeWEwSUxMX2wyZzNWRlhwNGFub1pxaXlxYUhfMDBiR2NKdkN3MnpybC1KZEIycW9yTG9JVWNPUlM1ZzAwLXBtYUIz?oc=5",
           "source": "財経新聞",
           "published": "2026-10-13T02:56:25+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "【9/28 相場振り返り】キオクシア -4.4%｜材料と次の注目点 Antarctic Sea Ice (ebqycusUCX) - Unisba Media",
-          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPejZueTl3Y1hfX1pPUEtJM2hudUV5S1JjOEhRaGlHM29VVlJoYW0zM1U1SFlXd2pDNDRQS2QtcV8wZGo5UUZsbVllSGJXakptLVNjdkt4eURyQXRUN2U4aUYzcUk3MFY0RlVzNG9Cc2lSdkJFQ2o3Si1jeFlTaVRUTm9n?oc=5",
-          "source": "Unisba Media",
-          "published": "2026-10-16T20:27:55+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
@@ -8000,21 +8058,21 @@
           "fake_news_risk": false
         },
         {
-          "title": "カルナバイオサイエンス(株)【4572】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9lNkxyeFdHSTk4cWxQa2hZRDN0MTR1VGhtcnNyWlppclQ4N2o5VjJQaHA4TWt5enR4aUc1QXF0cGpTUTI2NU5yVlNqWXBKSjkwbXFJajhDSjF5bGxsZHJj?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T07:03:39+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
           "title": "カルナバイオ、Heartseed、ラクオリア創薬が上昇、アンジェス、シンバイオ製薬、ジーエヌアイグループが下落 - 日経バイオテクONLINE",
           "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBMX256VkVqRGJ1OFFOejg3MnMtQzN1VzVBZV9jVFota1N0bmVuTUJYS3pwSWtQeHY3QzVIODZaR241OGxCQk85NkZNeC02UXJ0Q1Q5RTMwOHBiREtLXzNVMG43aFpJQWpRb1U4cEZXTQ?oc=5",
           "source": "日経バイオテクONLINE",
           "published": "2026-10-18T03:28:23+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
+          "fake_news_risk": false
+        },
+        {
+          "title": "カルナバイオサイエンス(株)【4572】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9lNkxyeFdHSTk4cWxQa2hZRDN0MTR1VGhtcnNyWlppclQ4N2o5VjJQaHA4TWt5enR4aUc1QXF0cGpTUTI2NU5yVlNqWXBKSjkwbXFJajhDSjF5bGxsZHJj?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T07:04:23+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
           "fake_news_risk": false
         },
         {
@@ -8077,7 +8135,7 @@
       "news_count": 12,
       "expectation_pct": 40.4,
       "confidence": "中",
-      "confidence_score": 0.467,
+      "confidence_score": 0.45,
       "news": [
         {
           "title": "【明日の好悪材料】を開示情報でチェック！ (10月19日発表分)(株探ニュース) - Yahoo!ファイナンス",
@@ -8179,12 +8237,12 @@
           "fake_news_risk": false
         },
         {
-          "title": "東証グロース（前引け）＝値上がり優勢、ＧセキュリがS高(株探ニュース) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNOHlnSVZ0RlhVN1FEYlVCZWI2MjlBQUxaOHJRTWh3YkNoa3pIZDR2X1N2LVYxamNaVUZ6TjBaQXA2UGpQRjdwaVQxX19aQlQ1Wl9ZYmpEb3NiYTRZTHZocGhjTjcwVjRWOEVHM25mdVROQTF3SEpSdm1pSDh3Nm5hVEZyMjNRV1k?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-16T02:33:40+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
+          "title": "NANOホールディングス、コージンバイオ、ステラファーマが上昇、VIS、Delta-Fly、オンコリスが下落 - 日経バイオテクONLINE",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9ydlRkbjN2S2VuSXoyMXBxSV8tTG1BOU13aXFsWTRpRlhiVzNCeGs0clFBUUFhYUU1LVBjX292LVNnbWc3LXFUVFJvM3pzcDBkbWxGTm9DQU44T1pESTlycWJZcnRaS2duZjhKMWlJVQ?oc=5",
+          "source": "日経バイオテクONLINE",
+          "published": "2026-10-16T13:11:08+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
           "fake_news_risk": false
         }
       ],
@@ -8658,10 +8716,10 @@
       "sector": "小売業",
       "price": 43.0,
       "change_pct": 53.57,
-      "news_count": 5,
+      "news_count": 6,
       "expectation_pct": 39.0,
       "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.36,
+      "confidence_score": 0.367,
       "news": [
         {
           "title": "海帆 (3133) : 今後の予想・売買予想・AI株価診断 [kaihan] - みんかぶ",
@@ -8704,6 +8762,15 @@
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOZVBMRXo4NDNIV05qMTJCbFVCWGN5Uld5VTlGOGpGWWNkd2I1cWF2ZWlCZjNYXzhZbkhYNHowZ0c1Q25ZWWlYT1cyd2F0X0ptbmZsZWdWU01FUHRmdkZvTDdKT2R4OS1FMWFLbmszcXZweEZTdlNlaWJsbjE4bXdCX1RHekZfczQ?oc=5",
           "source": "Yahoo!ファイナンス",
           "published": "2026-10-20T06:46:13+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "(株)Ｂｉｒｄｍａｎ【7063】：掲示板 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5JQm9iREIxRTlOejluTUtmSWRkLTM3U1hjMUR2dlpKWWdmOVYwaVVlQWpEaHdTMk9TNjQzaUpjZVRfdnNKeHl2czgxUXZsbnVES0h1RXJLSHBYZw?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T07:07:39+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
@@ -8945,15 +9012,6 @@
           "fake_news_risk": false
         },
         {
-          "title": "業績修正（取引時間中）－ツガミ(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUFLQkhacnVKQmJDSkxVWWNfMnRfVDl1Tkwtb0VMSDFEYzRPZXN0aHRkUktMUXRxUXhnV2lWdDhIUU1kNElVZm5EWnFsSGNWZkt3bFRJNGw5N0xsZHJGUjM1LUc3OW82Z0xEN0laMDV0SHJrcTVkcC1rQ2NiUUNQX2kyMm9GRG8?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T08:30:04+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
           "title": "ツガミ、２７年３月期の年間配当予想を１１０円に修正(ウエルスアドバイザー) - Yahoo!ファイナンス",
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQU1TaDg0Yk1YYmJ5M242U191NVV4RDZzRER3cTh0djRhUmNYVkNvWnUzVUJqNVc3bjlKVkdNUURlX0FkTVFXV3N6cnhPZGZUSGU2ci1fSmUtblROSGdsNjdNU2xkTVY0b2JRUEd4d3l3QmhYb3VYb0d1U1VBODR6NHZfX1B2dEk?oc=5",
           "source": "Yahoo!ファイナンス",
@@ -8985,6 +9043,15 @@
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQaVV0eHZOQkxJblU2R1hCTjRhZnJCZTgtODNKVVk0MVVkSzNxaldqTG03N1lqejBhZGw3RFJhTGhHN2xsSC1kd2pwVDI1ZjV6REJWVkxVRmstd1h1UUlfOHdVLUh2LTdXVnR5aWNCUk1ueFBRRXZORFdtMEVYS2hZTkRwN0NJWms?oc=5",
           "source": "Yahoo!ファイナンス",
           "published": "2026-10-20T04:00:50+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "業績修正（取引時間中）－ツガミ(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUFLQkhacnVKQmJDSkxVWWNfMnRfVDl1Tkwtb0VMSDFEYzRPZXN0aHRkUktMUXRxUXhnV2lWdDhIUU1kNElVZm5EWnFsSGNWZkt3bFRJNGw5N0xsZHJGUjM1LUc3OW82Z0xEN0laMDV0SHJrcTVkcC1rQ2NiUUNQX2kyMm9GRG8?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-20T08:30:04+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
@@ -9031,53 +9098,6 @@
       "sector_relative": null,
       "earnings_soon": false,
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=6101.T"
-    },
-    {
-      "code": "2437",
-      "name": "Ｓｈｉｎｗａ　Ｗｉｓｅ　Ｈｏｌｄｉｎｇｓ",
-      "market": "スタンダード（内国株式）",
-      "sector": "サービス業",
-      "price": 541.0,
-      "change_pct": -6.72,
-      "news_count": 1,
-      "expectation_pct": 38.0,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.4,
-      "news": [
-        {
-          "title": "シンワアートオークション(株)【2437】：株価・株式情報 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9zUTNXZ1g3MW5lUm16cnVNVHB0eUxJcWFKNTNGN0dRdWkweWlLREgxeUdsNzc2bXhjLW9aZ01ZVW5TRUI4UjNCYmpHNE04X21pQnc?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-16T11:49:37+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        }
-      ],
-      "technical": {
-        "sma25": 609.9,
-        "sma75": 610.6,
-        "rsi14": 26.1,
-        "trend_signal": -1,
-        "range_pos_52w": 0.544,
-        "high_52w": 793.0,
-        "low_52w": 240.0,
-        "change_1m_pct": -12.03,
-        "change_3m_pct": -9.23,
-        "relative_strength_1m_vs_nikkei": -12.27,
-        "volume_ratio_20d": 1.51
-      },
-      "technical_score": -0.5,
-      "technical_reasons": [
-        "25日・75日移動平均線がともに下向き(下降トレンド)",
-        "RSI14が26.1で売られすぎ水準(自律反発の可能性)",
-        "直近1ヶ月の騰落率が日経平均を12.3pt下回っている",
-        "直近出来高が20日平均の1.51倍に増加(下落の信頼性が高く、下値不安)"
-      ],
-      "fundamentals": {},
-      "sector_relative": null,
-      "earnings_soon": false,
-      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=2437.T"
     },
     {
       "code": "6231",
@@ -9243,150 +9263,6 @@
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=6951.T"
     },
     {
-      "code": "5803",
-      "name": "フジクラ",
-      "market": "プライム（内国株式）",
-      "sector": "非鉄金属",
-      "price": 4192.0,
-      "change_pct": -6.47,
-      "news_count": 12,
-      "expectation_pct": 36.1,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.4,
-      "news": [
-        {
-          "title": "フジクラは4日続落､信用期日到来で手じまい売り続く - 四季報オンライン",
-          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBQdkpPNjh0M2hjcE1wQTRybm92UjBsYkRKcWNXNVJTeWl4VGMtRndZTmdqdUJwdE0yNG8yLUg0VXA3dGh1Y3BMYWd4WDdhNDhHNmhsOEZ3cw?oc=5",
-          "source": "四季報オンライン",
-          "published": "2026-10-20T01:17:22+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "日経平均は５３０円安、マイナス寄与上位はソフバンＧ、フジクラ、京セラ＝２０日後場(ウエルスアドバイザー) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxObG1hNmRJY3RyNlJBTXdZci1heU5TQ0VOdmNvUGM1LVNwWkt2MDhpN2VUR01fRVdWLXFrNzZKWEU2QXBMM3RZVEMxckYyODh3Sk1CVHVzSzFmcDJraU9YeXd0Smg2R3NrbF9JSVZ5WFJJU1J6YVo4X19pd0pGWE1nS3ZQM0s5SUU?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T03:50:29+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "信用残ランキング【売り残増加】 神戸物産、古河電、フジクラ - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0za19BeHR0S2RqeDB4cEwyNjhzZ3hoTU1MUkpPckN4a0FVbTA3dUZHbUhtVlRSNDgxSDk0bnVXdC1QcE9EeW5oWWR6czBoeDIzY0g4cUQxWXdvX1FXaEpDeA?oc=5",
-          "source": "株探",
-          "published": "2026-10-11T07:00:00+00:00",
-          "credibility_tier": "中〜高(大手報道・専門メディア)",
-          "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
-          "title": "フジクラ－大幅に4日続落 佐倉事業所敷地内の一部区画が要措置区域へ指定(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQY2t5S0FqN3ZFZ25oQWplRGV2S3d3ckQ4dXhrM1otRmROeVlDT01kTW1TMUc2YmR4dEJMM01SUU9KNmJNR1BvMGRla0JYTkYtVDRlQmNpTHBKYjZOS0U5a0tVdHJQa0VObGUxMWp4RFdSRjlpQWFCRTRaeU1yU0JsZl9yT2dzWW8?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T03:45:03+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "フジクラ株に直撃する理由とは？TSMC設備投資10兆円と9月10日発表の月次売上がなぜ注目されるのか？関係性を徹底解説 Tameside (fZJGLMMfBP) - Unisba Media",
-          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE95ejlpUThVaDNGNGtxelJYeFhZc3AzX29nMVpuWV9WbldORmVfV2xFMTZlSGhhbVJzMUowVXlMUTItSlFtNFVQczlYaVpKMmpLR01jUlpWQm9GZmRESFUxRXhUaUZrZw?oc=5",
-          "source": "Unisba Media",
-          "published": "2026-10-19T16:03:53+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "住友電工の株価は今後どうなる？上昇・下落の理由を徹底解説！ - かぶリッジ",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBkVTdlUVZaUGlwR3ZwVWF5VU1QN1VmSVBlQ1lVY0plamZ0eVBUanpkQ2xqaVp4UjB5MjFNQktMejhlR3p1aTh1LWlwem1FS2Z1RDdSZ1RNZUJiMkR6aWc?oc=5",
-          "source": "かぶリッジ",
-          "published": "2026-10-20T02:16:45+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        },
-        {
-          "title": "信用残ランキング【買い残減少】 フジクラ、古河電、東電ＨＤ - 株探",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9rc2pvUS1DRW9EV1BHNE1pLUVweW1HZS1IMmxyeVZzdy1zaFMtY19xT2QxalRtOEtpMFIzOUVrTEVZa25wSGs4NjlIZ2tTbWxSV2c?oc=5",
-          "source": "株探",
-          "published": "2026-10-10T23:00:00+00:00",
-          "credibility_tier": "中〜高(大手報道・専門メディア)",
-          "credibility_weight": 0.7,
-          "fake_news_risk": false
-        },
-        {
-          "title": "後場コメント No.2 ＨＡＮＡＴＯＵＲ、フジクラ、ＮＴＴ、サイゼリヤ、富士フイルム、ツガミ(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUHFJZmlhRk1Eb0M3RklBNV92RlBEc3FzY252ZVU5X0dPdTNoYnVZWG9rUVA0aE1jRmktRDJic0NXNEVraXF3d3VLZW03YTdBb0ZaV1lnWVZSVWdLbmgwWTlaN2NQRlpXdnNDOHJnNjYzNVo1cVlCakRRYWI4LVZybl9xWFVFbFE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T06:33:02+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "日経平均５２０円程度安、採用銘柄の値下がり率上位はソフバンＧ、レゾナック、フジクラなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNQl9MLXZ0R3dRTWtTMHh0WGgwQ0NFOGxneklNVU5MRXoxY2w4V09PclJXSWF6SW5FT0pVOWllZWttdUV1a1U1WkFLWS1WSDc3NXdORDh3ckZRdVVBLWVaZVVqc2Q0ZnY4NXRNTVFiUTdtWFR3dGlGeWl6MVUxVE5Mc29wY0MwVHc?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-20T02:03:32+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "特別気配＞ キオクシア、ＳＢＧ、フジクラが売り気配(株探ニュース) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQVVlfb0VVRHhmajFJZDFyUk92LTNTM2wyYVJfdjRHMGhnZUR5RDNKQ3JOSHNQMGpISWhSMWc3aTdOUkhiaW5acFJIb1BaRERnUWpoX3BNa1dJSWVKYU9UeW9ENnhDcEs1WUk2NnEyVXZ5REoxT3JYbzBfbEZzZloyS0IwQUtrcFk?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T00:04:25+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "特別気配＞ キオクシア、ＳＢＧ、フジクラが売り気配(株探ニュース) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxORzVNWEhNakFaZEktd0k1T1RpZ2ljV0xSMUZGdnV2ZkhaM3kzUUNDNWdZRlhKNnRKR3dZVDdqd3JybWxDT096MGh6STJxZEh6VnBNNzJaOFMwUFBrLU0xalNLQ1YtYkFjQUZvSnJvN3JteGxMdjBjRUc3MGhCREFOVGhHNVdJUGc?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-15T00:04:14+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "信用残ランキング【売り残増加】 神戸物産、古河電、フジクラ(株探ニュース) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPcnFubjR3MHpWQ25mempidEpXOXM3dGk4QldhSW84MFJ3bUktdS1HbWhoeU5kNjBseGI1TTMycWszUTEwaWxtUFpJekl2T2F6VjBZcFF2ZW95blRkVUhTanhtcVZHSTFWcXBnOFVSM2JTMExIZW9FYU1JUk5rYTRwZGtMTjM1V2s?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-11T07:00:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        }
-      ],
-      "technical": {
-        "sma25": 5057.4,
-        "sma75": 5069.5,
-        "rsi14": 37.3,
-        "trend_signal": -1,
-        "range_pos_52w": 0.295,
-        "high_52w": 7855.0,
-        "low_52w": 2660.0,
-        "change_1m_pct": -13.37,
-        "change_3m_pct": -10.27,
-        "relative_strength_1m_vs_nikkei": -13.61,
-        "volume_ratio_20d": 1.0
-      },
-      "technical_score": -0.6,
-      "technical_reasons": [
-        "25日・75日移動平均線がともに下向き(下降トレンド)",
-        "直近1ヶ月の騰落率が日経平均を13.6pt下回っている"
-      ],
-      "fundamentals": {},
-      "sector_relative": null,
-      "earnings_soon": false,
-      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=5803.T"
-    },
-    {
       "code": "6480",
       "name": "日本トムソン",
       "market": "プライム（内国株式）",
@@ -9400,9 +9276,9 @@
       "news": [
         {
           "title": "マーケット速報 - 北國新聞",
-          "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYUY0dU51TmVDWl95R0dtT1hWV0pQTU5ydFhfVjN1QnEzRVpyOGFEV29QT3N5aV9pZ2tUU0JPR3hsMW9pb0FHX1dyTWRRVk5XYWpTZWZ1bHRlcVdtdlNkRVQyeV9PYUpTN1VYT1VjUmVSVG8yM1dKOWlheWsxc3ZaVHBEU1VzMm10cE9fcUs3SlMzSDVWNXRiUmxrMTJLUmdyUzI5RGU4c1Rad25QVUtjc2xxcW5fREU?oc=5",
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOWXJmTnlUVl9OT0d1NU9FNHRTRVA4S1RnZUQ3UTAwdl96TXdsdkZrVGZtVUowenV4TTB1dV9ud3gxNmpHOWFjSXpNSENnM1RrZXEwSlNKdU1JRENqNE1lLWQzekdBOW9UUUl1dFo4WG5YVzRjcUs2LTRRSmxTWkZhaWRwamxSc1RUT0NVTmp0cWQwM0N4azVwM011VlM1SGFFcUpQUUwzYVZ1YlhpNDRGOEVyUWo?oc=5",
           "source": "北國新聞",
-          "published": "2026-10-14T01:39:21+00:00",
+          "published": "2026-10-14T21:33:19+00:00",
           "credibility_tier": "低(発信元未確認)",
           "credibility_weight": 0.2,
           "fake_news_risk": false
@@ -9762,7 +9638,7 @@
       "sector": "卸売業",
       "price": 962.0,
       "change_pct": -6.6,
-      "news_count": 2,
+      "news_count": 1,
       "expectation_pct": 34.0,
       "confidence": "低(未確認情報が中心)",
       "confidence_score": 0.4,
@@ -9772,15 +9648,6 @@
           "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5kY3ZGVjBfS0xPdEFSVWswdEFqOEk5ME5Ockd5alhrTndNa1pxT2k3dk85SEloOFJYNjVNVWd6TTNpZVFjVlVUeHo1TU9XY2NqUy1iQ210aEthTS1QS1dN?oc=5",
           "source": "Yahoo!ファイナンス",
           "published": "2026-10-19T07:04:14+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "太洋物産(株)【9941】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4xZFFzY1czWlpLNTU3Uk4xeGRCZ3RUNjhFMVVlMmM5TDRPUWRQNm94cGN3cVR5cW03UTVUWUFlSHZnOWxrWmJua2xYNy10cTdLNU1tNlBLVkwzemMzZlBj?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-16T07:05:03+00:00",
           "credibility_tier": "中(集約サイト・個人寄稿含む)",
           "credibility_weight": 0.4,
           "fake_news_risk": false
@@ -10104,6 +9971,136 @@
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=9270.T"
     },
     {
+      "code": "2437",
+      "name": "Ｓｈｉｎｗａ　Ｗｉｓｅ　Ｈｏｌｄｉｎｇｓ",
+      "market": "スタンダード（内国株式）",
+      "sector": "サービス業",
+      "price": 541.0,
+      "change_pct": -6.72,
+      "news_count": 3,
+      "expectation_pct": 33.0,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.333,
+      "news": [
+        {
+          "title": "シンワアートオークション(株)【2437】：株価・株式情報 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9zUTNXZ1g3MW5lUm16cnVNVHB0eUxJcWFKNTNGN0dRdWkweWlLREgxeUdsNzc2bXhjLW9aZ01ZVW5TRUI4UjNCYmpHNE04X21pQnc?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T11:49:37+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "【決算速報】ＳｈｉｎｗａＷＨ、1Q経常-186百万。(アイフィス株予報) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPM2NzV0hWSGtCOUpTSFlfZmtiTkVIZmZLUkhYRGJNTEtvMms3VGZzVEdDUmZFRDN5WHpNQWRiR2FwcExHRmRqVDUyS2sxb0tPajREaWFORWZPV29OeGVQbFM4SEhTZzJTUFMweWd0ZEFjYjlzSXRQdHBPVjRYb204VFVveWtjSEU?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-15T07:49:44+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "シンワワイズは一時Ｓ安、６～８月は営業赤字継続 - ライブドアニュース",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5oMm0wN1M5M2Y4dWZJU3RRcFhGNjgyaFVBcThzVk9NajRjMnFrUXlqR3NrNkNTWGF6SmJSMnU4anVDMlNLN18wXzdSb3poRG90WUZTVUFLUGFtd1llV1o4?oc=5",
+          "source": "ライブドアニュース",
+          "published": "2026-10-16T01:12:02+00:00",
+          "credibility_tier": "低(発信元未確認)",
+          "credibility_weight": 0.2,
+          "fake_news_risk": false
+        }
+      ],
+      "technical": {
+        "sma25": 609.9,
+        "sma75": 610.6,
+        "rsi14": 26.1,
+        "trend_signal": -1,
+        "range_pos_52w": 0.544,
+        "high_52w": 793.0,
+        "low_52w": 240.0,
+        "change_1m_pct": -12.03,
+        "change_3m_pct": -9.23,
+        "relative_strength_1m_vs_nikkei": -12.27,
+        "volume_ratio_20d": 1.51
+      },
+      "technical_score": -0.5,
+      "technical_reasons": [
+        "25日・75日移動平均線がともに下向き(下降トレンド)",
+        "RSI14が26.1で売られすぎ水準(自律反発の可能性)",
+        "直近1ヶ月の騰落率が日経平均を12.3pt下回っている",
+        "直近出来高が20日平均の1.51倍に増加(下落の信頼性が高く、下値不安)"
+      ],
+      "fundamentals": {},
+      "sector_relative": null,
+      "earnings_soon": false,
+      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=2437.T"
+    },
+    {
+      "code": "190A",
+      "name": "Ｃｈｏｒｄｉａ　Ｔｈｅｒａｐｅｕｔｉｃｓ",
+      "market": "グロース（内国株式）",
+      "sector": "医薬品",
+      "price": 52.0,
+      "change_pct": -7.14,
+      "news_count": 3,
+      "expectation_pct": 31.5,
+      "confidence": "低(未確認情報が中心)",
+      "confidence_score": 0.4,
+      "news": [
+        {
+          "title": "Ｃｈｏｒｄｉａ Ｔｈｅｒａｐｅｕｔｉｃｓ(株)【190A】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0xc2tlZE1udm1LSGs2dVROX1J4TGJsZUZEM0lxUm94TjlOV1lQM1VZZFk2eTUtMTM4amUwaEVWeEVLcm55Nk5EdnNYOWkwZ2VrNFc3cTlteGl2UXZzcHNV?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-16T07:02:20+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "Chordia Therapeutics---赤字幅縮小、rogocekibの初期拡大コホート組入れ完了(フィスコ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWlc0RG8xOTQycnNxTk9tQzAxc1NRZjR4REdqZEg2TEZRdVRlc0ZhRVBodGhBWU9DZlR1UGdacEZ6a1pqRF9yYVN0ZGZNR1R4dzRTM2dMOS1qY1kwV3lXWTRaX0lSZ1hoeWdNRl95a2lfT2owMTI3OEdyT0FCbHpxNkQ3ZGkyMlE?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-19T01:00:21+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        },
+        {
+          "title": "Ｃｈｏｒｄｉａ Ｔｈｅｒａｐｅｕｔｉｃｓ(株)【190A】：決算情報 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1qTE9VLVNNcUlmLTFpTkx4cUNSNUM4QUtqMXZ3Uk9ub2dwTDVzSHdHckpKT3VWamJpc2xEZGdWcmE4ekV2c0lpREFabzcwSkJsY0hXVGxka0dyWTQ4SkZ4YQ?oc=5",
+          "source": "Yahoo!ファイナンス",
+          "published": "2026-10-15T06:30:00+00:00",
+          "credibility_tier": "中(集約サイト・個人寄稿含む)",
+          "credibility_weight": 0.4,
+          "fake_news_risk": false
+        }
+      ],
+      "technical": {
+        "sma25": 63.2,
+        "sma75": 72.8,
+        "rsi14": 14.3,
+        "trend_signal": -1,
+        "range_pos_52w": 0.0,
+        "high_52w": 167.0,
+        "low_52w": 52.0,
+        "change_1m_pct": -23.53,
+        "change_3m_pct": -31.58,
+        "relative_strength_1m_vs_nikkei": -23.77,
+        "volume_ratio_20d": 0.56
+      },
+      "technical_score": -0.4,
+      "technical_reasons": [
+        "25日・75日移動平均線がともに下向き(下降トレンド)",
+        "RSI14が14.3で売られすぎ水準(自律反発の可能性)",
+        "直近1ヶ月の騰落率が日経平均を23.8pt下回っている",
+        "52週安値圏(年初来安値に接近)"
+      ],
+      "fundamentals": {},
+      "sector_relative": null,
+      "earnings_soon": false,
+      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=190A.T"
+    },
+    {
       "code": "280A",
       "name": "ＴＭＨ",
       "market": "グロース（内国株式）",
@@ -10195,80 +10192,6 @@
       "sector_relative": null,
       "earnings_soon": false,
       "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=280A.T"
-    },
-    {
-      "code": "190A",
-      "name": "Ｃｈｏｒｄｉａ　Ｔｈｅｒａｐｅｕｔｉｃｓ",
-      "market": "グロース（内国株式）",
-      "sector": "医薬品",
-      "price": 52.0,
-      "change_pct": -7.14,
-      "news_count": 4,
-      "expectation_pct": 29.1,
-      "confidence": "低(未確認情報が中心)",
-      "confidence_score": 0.35,
-      "news": [
-        {
-          "title": "Ｃｈｏｒｄｉａ Ｔｈｅｒａｐｅｕｔｉｃｓ(株)【190A】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0xc2tlZE1udm1LSGs2dVROX1J4TGJsZUZEM0lxUm94TjlOV1lQM1VZZFk2eTUtMTM4amUwaEVWeEVLcm55Nk5EdnNYOWkwZ2VrNFc3cTlteGl2UXZzcHNV?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-16T07:02:20+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "Chordia Therapeutics---赤字幅縮小、rogocekibの初期拡大コホート組入れ完了(フィスコ) - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWlc0RG8xOTQycnNxTk9tQzAxc1NRZjR4REdqZEg2TEZRdVRlc0ZhRVBodGhBWU9DZlR1UGdacEZ6a1pqRF9yYVN0ZGZNR1R4dzRTM2dMOS1qY1kwV3lXWTRaX0lSZ1hoeWdNRl95a2lfT2owMTI3OEdyT0FCbHpxNkQ3ZGkyMlE?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-19T01:00:21+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "Ｃｈｏｒｄｉａ Ｔｈｅｒａｐｅｕｔｉｃｓ(株)【190A】：決算情報 - Yahoo!ファイナンス",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1qTE9VLVNNcUlmLTFpTkx4cUNSNUM4QUtqMXZ3Uk9ub2dwTDVzSHdHckpKT3VWamJpc2xEZGdWcmE4ekV2c0lpREFabzcwSkJsY0hXVGxka0dyWTQ4SkZ4YQ?oc=5",
-          "source": "Yahoo!ファイナンス",
-          "published": "2026-10-15T06:30:00+00:00",
-          "credibility_tier": "中(集約サイト・個人寄稿含む)",
-          "credibility_weight": 0.4,
-          "fake_news_risk": false
-        },
-        {
-          "title": "Chordia Therapeutics---赤字幅縮小、rogocekibの初期拡大コホート組入れ完了 - ｄメニューニュース",
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT0RrbF9GWlJPTzUyZnJxZVBZbnFkcU5MMmhFNEpUTHZ5dXpGa3gxSEN6X0dTUUlIVl9CRkNuMmw5anJCcHdoQUxUTG5FQ3VmVGQ4MEVyTWFaV1BjbUtWQ3Y0aGwyWWNNaTV6VFhNdzJrSzZ4ZjJ6S3BXcHJpbEJUcXhQbjVhZmhFOWV6aNIBjAFBVV95cUxOT0RrbF9GWlJPTzUyZnJxZVBZbnFkcU5MMmhFNEpUTHZ5dXpGa3gxSEN6X0dTUUlIVl9CRkNuMmw5anJCcHdoQUxUTG5FQ3VmVGQ4MEVyTWFaV1BjbUtWQ3Y0aGwyWWNNaTV6VFhNdzJrSzZ4ZjJ6S3BXcHJpbEJUcXhQbjVhZmhFOWV6aA?oc=5",
-          "source": "ｄメニューニュース",
-          "published": "2026-10-19T01:00:00+00:00",
-          "credibility_tier": "低(発信元未確認)",
-          "credibility_weight": 0.2,
-          "fake_news_risk": false
-        }
-      ],
-      "technical": {
-        "sma25": 63.2,
-        "sma75": 72.8,
-        "rsi14": 14.3,
-        "trend_signal": -1,
-        "range_pos_52w": 0.0,
-        "high_52w": 167.0,
-        "low_52w": 52.0,
-        "change_1m_pct": -23.53,
-        "change_3m_pct": -31.58,
-        "relative_strength_1m_vs_nikkei": -23.77,
-        "volume_ratio_20d": 0.56
-      },
-      "technical_score": -0.4,
-      "technical_reasons": [
-        "25日・75日移動平均線がともに下向き(下降トレンド)",
-        "RSI14が14.3で売られすぎ水準(自律反発の可能性)",
-        "直近1ヶ月の騰落率が日経平均を23.8pt下回っている",
-        "52週安値圏(年初来安値に接近)"
-      ],
-      "fundamentals": {},
-      "sector_relative": null,
-      "earnings_soon": false,
-      "rakuten_url": "https://www.rakuten-sec.co.jp/web/market/search/quote.html?ric=190A.T"
     },
     {
       "code": "9238",
