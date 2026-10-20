@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本株 上昇期待度スクリーナー</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --panel: #ffffff;
+    --text: #1a1d23;
+    --muted: #6b7280;
+    --border: #e3e5e9;
+    --accent: #0f766e;
+    --up: #c2410c;
+    --down: #1d4ed8;
+    --warn-bg: #fff7ed;
+    --warn-border: #fdba74;
+    --badge-high: #15803d;
+    --badge-mid: #b45309;
+    --badge-low: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --panel: #1d2026;
+      --text: #e7e9ec;
+      --muted: #9aa1ac;
+      --border: #2b2f37;
+      --accent: #2dd4bf;
+      --up: #fb923c;
+      --down: #60a5fa;
+      --warn-bg: #2a2111;
+      --warn-border: #92400e;
+      --badge-high: #4ade80;
+      --badge-mid: #fbbf24;
+      --badge-low: #f87171;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    line-height: 1.6;
+    padding-bottom: 3rem;
+  }
+  header {
+    padding: 1.25rem 1rem 0.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.25rem; margin: 0 0 0.25rem; }
+  .subtitle { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .disclaimer {
+    max-width: 960px;
+    margin: 0.75rem auto 0;
+    padding: 0.75rem 1rem;
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: var(--text);
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+  .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: var(--muted); }
+  .field input {
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    width: 7.5rem;
+  }
+  .field input[type="text"] { width: 12rem; }
+  .field label.checkbox { flex-direction: row; align-items: center; gap: 0.4rem; }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+  }
+  .table-scroll { overflow-x: auto; margin-top: 0.75rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.88rem; }
+  th, td { padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+  th { color: var(--muted); font-weight: 600; cursor: pointer; user-select: none; }
+  th.sorted { color: var(--accent); }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .pct { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .chg-up { color: var(--up); }
+  .chg-down { color: var(--down); }
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-high { background: color-mix(in srgb, var(--badge-high) 18%, transparent); color: var(--badge-high); }
+  .badge-mid { background: color-mix(in srgb, var(--badge-mid) 18%, transparent); color: var(--badge-mid); }
+  .badge-low { background: color-mix(in srgb, var(--badge-low) 18%, transparent); color: var(--badge-low); }
+  .news-row td { text-align: left; white-space: normal; background: color-mix(in srgb, var(--accent) 4%, transparent); }
+  .news-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--border); font-size: 0.82rem; }
+  .news-item:last-child { border-bottom: none; }
+  .news-title a { color: var(--text); text-decoration: none; }
+  .news-title a:hover { text-decoration: underline; }
+  .news-sub { color: var(--muted); font-size: 0.75rem; margin-top: 0.15rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .fake-flag {
+    color: var(--badge-low);
+    font-weight: 600;
+    border: 1px solid var(--badge-low);
+    border-radius: 6px;
+    padding: 0 0.35rem;
+    font-size: 0.7rem;
+  }
+  .rakuten-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.78rem;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    white-space: nowrap;
+  }
+  .empty-state { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.9rem; }
+  footer { max-width: 960px; margin: 1.5rem auto 0; padding: 0 1rem; color: var(--muted); font-size: 0.75rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>日本株 上昇期待度スクリーナー</h1>
+  <p class="subtitle">楽天証券取扱いの国内株(東証上場)が対象 / ニュース見出しから算出した参考指標</p>
+  <div class="disclaimer">
+    ⚠️ これは投資助言ではありません。「上昇期待度」はニュースの見出しを機械的に解析した参考スコアであり、将来の株価を保証しません。
+    発信元の信頼度が低い・裏取りが取れていないニュースには「⚠要注意」を表示しています。実際の売買前に、必ずご自身でニュース原文と
+    <strong>楽天証券での取扱い有無</strong>をご確認ください。
+  </div>
+</header>
+<main>
+  <div class="panel">
+    <div class="filters">
+      <div class="field">
+        <label for="minPrice">最低株価(円)</label>
+        <input id="minPrice" type="number" min="0" step="1" placeholder="0">
+      </div>
+      <div class="field">
+        <label for="maxPrice">最高株価(円)</label>
+        <input id="maxPrice" type="number" min="0" step="1" placeholder="100000">
+      </div>
+      <div class="field">
+        <label for="search">銘柄名・コード検索</label>
+        <input id="search" type="text" placeholder="例: トヨタ / 7203">
+      </div>
+      <div class="field checkbox" style="flex-direction:row; align-items:center;">
+        <input id="highConfOnly" type="checkbox">
+        <label for="highConfOnly" style="margin:0;">信頼度「高」のみ表示</label>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span id="lastUpdated">読み込み中...</span>
+      <span id="matchCount"></span>
+    </div>
+    <div class="table-scroll">
+      <table id="stockTable">
+        <thead>
+          <tr>
+            <th data-key="code">コード</th>
+            <th data-key="name">銘柄名</th>
+            <th data-key="price">現在値</th>
+            <th data-key="change_pct">前日比</th>
+            <th data-key="expectation_pct" class="sorted">上昇期待度</th>
+            <th data-key="confidence">信頼度</th>
+            <th data-key="news_count">news</th>
+            <th>楽天</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div id="emptyState" class="empty-state" style="display:none;"></div>
+  </div>
+</main>
+<footer>
+  価格帯を変えて新しく検索したい場合は、GitHubリポジトリの Actions タブから
+  「Update stock scores」ワークフローを手動実行(Run workflow)し、最低/最高株価を入力してください。
+  実行完了後、数分でこのページのデータが更新されます。
+</footer>
+
+<script>
+const state = { stocks: [], sortKey: "expectation_pct", sortDir: -1 };
+
+function creditBadgeClass(label) {
+  if (label.startsWith("高")) return "badge-high";
+  if (label.startsWith("中")) return "badge-mid";
+  return "badge-low";
+}
+
+function fmtPct(v) {
+  const sign = v > 0 ? "+" : "";
+  return `${sign}${v.toFixed(2)}%`;
+}
+
+function render() {
+  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
+  const maxPriceRaw = document.getElementById("maxPrice").value;
+  const maxPrice = maxPriceRaw === "" ? Infinity : parseFloat(maxPriceRaw);
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const highOnly = document.getElementById("highConfOnly").checked;
+
+  let rows = state.stocks.filter(s => s.price >= minPrice && s.price <= maxPrice);
+  if (q) {
+    rows = rows.filter(s => s.name.toLowerCase().includes(q) || s.code.includes(q));
+  }
+  if (highOnly) {
+    rows = rows.filter(s => s.confidence.startsWith("高"));
+  }
+
+  rows.sort((a, b) => {
+    const av = a[state.sortKey], bv = b[state.sortKey];
+    if (typeof av === "string") return av.localeCompare(bv) * state.sortDir;
+    return (av - bv) * state.sortDir;
+  });
+
+  document.getElementById("matchCount").textContent = `${rows.length} 件 / 全 ${state.stocks.length} 件`;
+
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+  const emptyState = document.getElementById("emptyState");
+  emptyState.style.display = rows.length ? "none" : "block";
+  emptyState.textContent = "条件に一致する銘柄がありません。価格帯を広げてみてください。";
+
+  for (const s of rows) {
+    const tr = document.createElement("tr");
+    const chgClass = s.change_pct > 0 ? "chg-up" : s.change_pct < 0 ? "chg-down" : "";
+    tr.innerHTML = `
+      <td>${s.code}</td>
+      <td>${s.name}</td>
+      <td>${s.price.toLocaleString()}円</td>
+      <td class="${chgClass}">${fmtPct(s.change_pct)}</td>
+      <td class="pct">${s.expectation_pct.toFixed(1)}%</td>
+      <td><span class="badge ${creditBadgeClass(s.confidence)}">${s.confidence}</span></td>
+      <td>${s.news_count}</td>
+      <td><a class="rakuten-link" target="_blank" rel="noopener" href="${s.rakuten_url}" onclick="event.stopPropagation()">確認</a></td>
+    `;
+    tr.addEventListener("click", () => toggleNews(tr, s));
+    tbody.appendChild(tr);
+  }
+}
+
+function toggleNews(tr, stock) {
+  const next = tr.nextElementSibling;
+  if (next && next.classList.contains("news-row")) {
+    next.remove();
+    return;
+  }
+  document.querySelectorAll(".news-row").forEach(el => el.remove());
+
+  const newsRow = document.createElement("tr");
+  newsRow.className = "news-row";
+  const td = document.createElement("td");
+  td.colSpan = 8;
+
+  if (!stock.news || stock.news.length === 0) {
+    td.textContent = "関連ニュースが見つかりませんでした。";
+  } else {
+    td.innerHTML = stock.news.map(n => `
+      <div class="news-item">
+        <div class="news-title"><a href="${n.link}" target="_blank" rel="noopener">${n.title}</a></div>
+        <div class="news-sub">
+          <span>${n.source}</span>
+          <span class="badge ${creditBadgeClass(n.credibility_tier)}">${n.credibility_tier}</span>
+          ${n.fake_news_risk ? '<span class="fake-flag">⚠要注意(真偽未確認)</span>' : ""}
+          ${n.published ? `<span>${new Date(n.published).toLocaleDateString("ja-JP")}</span>` : ""}
+        </div>
+      </div>
+    `).join("");
+  }
+
+  newsRow.appendChild(td);
+  tr.after(newsRow);
+}
+
+document.querySelectorAll("#stockTable th[data-key]").forEach(th => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.key;
+    if (state.sortKey === key) {
+      state.sortDir *= -1;
+    } else {
+      state.sortKey = key;
+      state.sortDir = -1;
+    }
+    document.querySelectorAll("#stockTable th").forEach(t => t.classList.remove("sorted"));
+    th.classList.add("sorted");
+    render();
+  });
+});
+
+["minPrice", "maxPrice", "search", "highConfOnly"].forEach(id => {
+  document.getElementById(id).addEventListener("input", render);
+});
+
+fetch("./data/scores.json")
+  .then(r => {
+    if (!r.ok) throw new Error("not found");
+    return r.json();
+  })
+  .then(data => {
+    state.stocks = data.stocks || [];
+    const updated = new Date(data.generated_at);
+    document.getElementById("lastUpdated").textContent =
+      `最終更新: ${updated.toLocaleString("ja-JP")}`;
+    render();
+  })
+  .catch(() => {
+    document.getElementById("lastUpdated").textContent = "データ未生成";
+    document.getElementById("emptyState").style.display = "block";
+    document.getElementById("emptyState").textContent =
+      "まだデータがありません。GitHub Actions の「Update stock scores」を一度実行してください。";
+  });
+</script>
+</body>
+</html>
