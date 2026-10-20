@@ -194,6 +194,61 @@
   .fav-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .fav-missing { color: var(--muted); }
   .fav-missing .fav-name { color: var(--muted); }
+  .row-actions { display: flex; gap: 0.1rem; }
+  .sim-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .sim-item:last-child { border-bottom: none; }
+  .sim-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .sim-sub { color: var(--muted); font-size: 0.72rem; }
+  .sim-profit { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sim-unknown { color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+  .sim-total { font-size: 0.85rem; font-weight: 600; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
+  }
+  .modal-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 320px;
+  }
+  .modal-title { font-weight: 600; margin-bottom: 0.25rem; }
+  .modal-stock { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .modal-field { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--muted); }
+  .modal-field input {
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+  }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .empty-state { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.9rem; }
   footer { max-width: 960px; margin: 1.5rem auto 0; padding: 0 1rem; color: var(--muted); font-size: 0.75rem; }
   footer a { color: var(--accent); }
@@ -218,6 +273,15 @@
     <div class="panel-title">⭐ マイ銘柄</div>
     <div id="favoritesList"></div>
     <div class="panel-note">この端末のブラウザにのみ保存されます(他の端末やブラウザとは共有されません)。</div>
+  </div>
+  <div class="panel" id="simPanel" style="display:none;">
+    <div class="panel-title">📈 シミュレーション(仮想購入の損益)</div>
+    <div id="simList"></div>
+    <div id="simTotal" class="sim-total"></div>
+    <div class="panel-note">
+      実際の売買ではなく、指定した価格・数量で購入したと仮定した場合の評価損益を計算する機能です。
+      この端末のブラウザにのみ保存されます。本日のデータに含まれない銘柄は評価損益を計算できません。
+    </div>
   </div>
   <div class="panel">
     <div class="filters">
@@ -290,6 +354,24 @@
     <div id="emptyState" class="empty-state" style="display:none;"></div>
   </div>
 </main>
+<div id="simModal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">シミュレーションに追加</div>
+    <div class="modal-stock" id="simModalStockName"></div>
+    <div class="modal-field">
+      <label for="simQty">数量(株)</label>
+      <input id="simQty" type="number" min="1" step="1" value="100">
+    </div>
+    <div class="modal-field">
+      <label for="simPrice">購入価格(円)</label>
+      <input id="simPrice" type="number" min="0" step="0.1">
+    </div>
+    <div class="modal-actions">
+      <button id="simCancelBtn" class="btn-secondary">キャンセル</button>
+      <button id="simSaveBtn" class="btn-primary">保存</button>
+    </div>
+  </div>
+</div>
 <footer>
   価格帯を変えて新しく検索したい場合は、GitHubリポジトリの Actions タブから
   「Update stock scores」ワークフローを手動実行(Run workflow)し、最低/最高株価を入力してください。
@@ -316,7 +398,86 @@ function saveFavorites(list) {
   }
 }
 
-const state = { stocks: [], sortKey: "expectation_pct", sortDir: -1, favorites: loadFavorites() };
+const SIM_KEY = "jp-stock-screener:sim";
+
+function loadSimPositions() {
+  try {
+    const raw = localStorage.getItem(SIM_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveSimPositions(list) {
+  try {
+    localStorage.setItem(SIM_KEY, JSON.stringify(list));
+  } catch (e) {
+    // プライベートブラウズ等でlocalStorageが使えない場合は何もしない
+  }
+}
+
+const state = {
+  stocks: [],
+  sortKey: "expectation_pct",
+  sortDir: -1,
+  favorites: loadFavorites(),
+  simPositions: loadSimPositions(),
+  priceMap: {},
+};
+
+let simModalTarget = null;
+
+function openSimModal(code, name, defaultPrice) {
+  simModalTarget = { code, name };
+  document.getElementById("simModalStockName").textContent = `${code} ${name}`;
+  document.getElementById("simQty").value = 100;
+  document.getElementById("simPrice").value = defaultPrice != null ? defaultPrice : "";
+  document.getElementById("simModal").style.display = "flex";
+}
+
+function openSimModalByCode(code) {
+  const s = state.stocks.find(x => x.code === code);
+  openSimModal(code, s ? s.name : code, s ? s.price : (state.priceMap[code] ?? null));
+}
+
+function closeSimModal() {
+  document.getElementById("simModal").style.display = "none";
+  simModalTarget = null;
+}
+
+function saveSimFromModal() {
+  if (!simModalTarget) return;
+  const qty = parseFloat(document.getElementById("simQty").value);
+  const price = parseFloat(document.getElementById("simPrice").value);
+  if (!(qty > 0) || !(price > 0)) {
+    alert("数量と購入価格を正しく入力してください。");
+    return;
+  }
+  state.simPositions.push({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    code: simModalTarget.code,
+    name: simModalTarget.name,
+    quantity: qty,
+    buyPrice: price,
+    buyDate: new Date().toISOString(),
+  });
+  saveSimPositions(state.simPositions);
+  closeSimModal();
+  render();
+}
+
+function removeSimPosition(id) {
+  state.simPositions = state.simPositions.filter(p => p.id !== id);
+  saveSimPositions(state.simPositions);
+  render();
+}
+
+function currentPriceFor(code) {
+  if (state.priceMap[code] != null) return state.priceMap[code];
+  const s = state.stocks.find(x => x.code === code);
+  return s ? s.price : null;
+}
 
 function isFavorite(code) {
   return state.favorites.some(f => f.code === code);
@@ -436,7 +597,12 @@ function render() {
     const fav = isFavorite(s.code);
     const signal = judgeSignal(s);
     tr.innerHTML = `
-      <td><button class="star-btn ${fav ? "active" : ""}" onclick="event.stopPropagation(); toggleFavoriteByCode('${s.code}')" title="マイ銘柄に追加/削除">${fav ? "★" : "☆"}</button></td>
+      <td>
+        <div class="row-actions">
+          <button class="star-btn ${fav ? "active" : ""}" onclick="event.stopPropagation(); toggleFavoriteByCode('${s.code}')" title="マイ銘柄に追加/削除">${fav ? "★" : "☆"}</button>
+          <button class="star-btn" onclick="event.stopPropagation(); openSimModalByCode('${s.code}')" title="シミュレーションに追加">📈</button>
+        </div>
+      </td>
       <td>${s.code}</td>
       <td>${s.name}${s.earnings_soon ? ' <span class="earnings-badge" title="決算発表が近く、値動きが大きくなりやすい時期です">📅決算間近</span>' : ""}</td>
       <td>${s.price.toLocaleString()}円</td>
@@ -452,6 +618,62 @@ function render() {
   }
 
   renderFavoritesPanel();
+  renderSimPanel();
+}
+
+function renderSimPanel() {
+  const panel = document.getElementById("simPanel");
+  const listEl = document.getElementById("simList");
+  const totalEl = document.getElementById("simTotal");
+  if (!state.simPositions.length) {
+    panel.style.display = "none";
+    return;
+  }
+  panel.style.display = "block";
+
+  let totalProfit = 0;
+  let hasKnown = false;
+
+  listEl.innerHTML = state.simPositions.map(p => {
+    const cur = currentPriceFor(p.code);
+    const buyDateStr = new Date(p.buyDate).toLocaleDateString("ja-JP");
+    if (cur == null) {
+      return `
+        <div class="sim-item">
+          <div class="sim-main">
+            <span class="fav-name">${p.code} ${p.name}</span>
+            <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円(${buyDateStr}購入)</span>
+          </div>
+          <span class="sim-unknown">本日の価格データなし</span>
+          <button class="star-btn" onclick="removeSimPosition('${p.id}')" title="削除">✕</button>
+        </div>
+      `;
+    }
+    const profit = (cur - p.buyPrice) * p.quantity;
+    const profitPct = (cur - p.buyPrice) / p.buyPrice * 100;
+    totalProfit += profit;
+    hasKnown = true;
+    const cls = profit > 0 ? "chg-up" : profit < 0 ? "chg-down" : "";
+    const sign = profit >= 0 ? "+" : "";
+    return `
+      <div class="sim-item">
+        <div class="sim-main">
+          <span class="fav-name">${p.code} ${p.name}</span>
+          <span class="sim-sub">${p.quantity}株 × ${p.buyPrice.toLocaleString()}円 → 現在値${cur.toLocaleString()}円(${buyDateStr}購入)</span>
+        </div>
+        <span class="sim-profit ${cls}">${sign}${Math.round(profit).toLocaleString()}円(${sign}${profitPct.toFixed(1)}%)</span>
+        <button class="star-btn" onclick="removeSimPosition('${p.id}')" title="削除">✕</button>
+      </div>
+    `;
+  }).join("");
+
+  if (hasKnown) {
+    const cls = totalProfit > 0 ? "chg-up" : totalProfit < 0 ? "chg-down" : "";
+    const sign = totalProfit >= 0 ? "+" : "";
+    totalEl.innerHTML = `合計評価損益: <span class="${cls}">${sign}${Math.round(totalProfit).toLocaleString()}円</span>`;
+  } else {
+    totalEl.textContent = "";
+  }
 }
 
 function renderFavoritesPanel() {
@@ -585,6 +807,24 @@ document.getElementById("favOnly").addEventListener("change", render);
   document.getElementById(id).addEventListener("input", render);
 });
 
+document.getElementById("simCancelBtn").addEventListener("click", closeSimModal);
+document.getElementById("simSaveBtn").addEventListener("click", saveSimFromModal);
+document.getElementById("simModal").addEventListener("click", (e) => {
+  if (e.target.id === "simModal") closeSimModal();
+});
+
+// シミュレーションの評価損益は、当日の深掘りスキャン対象(scores.json)に限らず
+// 価格帯スキャンの全銘柄(prices.json)から現在値を引けるようにする
+fetch(`./data/prices.json?t=${Date.now()}`, { cache: "no-store" })
+  .then(r => (r.ok ? r.json() : []))
+  .then(prices => {
+    for (const p of prices) {
+      state.priceMap[p.code] = p.price;
+    }
+    renderSimPanel();
+  })
+  .catch(() => {});
+
 fetch(`./data/scores.json?t=${Date.now()}`, { cache: "no-store" })
   .then(r => {
     if (!r.ok) throw new Error("not found");
@@ -602,6 +842,8 @@ fetch(`./data/scores.json?t=${Date.now()}`, { cache: "no-store" })
     document.getElementById("emptyState").style.display = "block";
     document.getElementById("emptyState").textContent =
       "まだデータがありません。GitHub Actions の「Update stock scores」を一度実行してください。";
+    renderFavoritesPanel();
+    renderSimPanel();
   });
 </script>
 </body>
