@@ -173,9 +173,29 @@
         <label for="search">銘柄名・コード検索</label>
         <input id="search" type="text" placeholder="例: トヨタ / 7203">
       </div>
-      <div class="field checkbox" style="flex-direction:row; align-items:center;">
-        <input id="highConfOnly" type="checkbox">
-        <label for="highConfOnly" style="margin:0;">信頼度「高」のみ表示</label>
+      <div class="field">
+        <label for="sortSelect">並び替え</label>
+        <select id="sortSelect">
+          <option value="expectation_pct:-1">上昇期待度が高い順</option>
+          <option value="expectation_pct:1">上昇期待度が低い順</option>
+          <option value="confidence:-1">信頼度が高い順</option>
+          <option value="confidence:1">信頼度が低い順</option>
+          <option value="change_pct:-1">前日比(値上がり)が大きい順</option>
+          <option value="change_pct:1">前日比(値下がり)が大きい順</option>
+          <option value="news_count:-1">ニュース件数が多い順</option>
+          <option value="price:1">株価が安い順</option>
+          <option value="price:-1">株価が高い順</option>
+          <option value="code:1">銘柄コード順</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="confFilter">信頼度で抽出</label>
+        <select id="confFilter">
+          <option value="all">すべて表示</option>
+          <option value="high">信頼度「高」のみ</option>
+          <option value="mid">信頼度「中」以上</option>
+          <option value="safe">⚠要注意ニュースを含む銘柄を除外</option>
+        </select>
       </div>
     </div>
     <div class="meta-row">
@@ -217,9 +237,37 @@ function creditBadgeClass(label) {
   return "badge-low";
 }
 
+// 古いデータ(confidence_score未生成)でも信頼度順ソートができるよう、ラベルからスコアを推定する
+function confScore(s) {
+  if (typeof s.confidence_score === "number") return s.confidence_score;
+  if (s.confidence.startsWith("高")) return 0.9;
+  if (s.confidence.startsWith("中")) return 0.6;
+  return 0.2;
+}
+
+const sortAccessors = {
+  code: s => s.code,
+  name: s => s.name,
+  price: s => s.price,
+  change_pct: s => s.change_pct,
+  expectation_pct: s => s.expectation_pct,
+  confidence: s => confScore(s),
+  news_count: s => s.news_count,
+};
+
 function fmtPct(v) {
   const sign = v > 0 ? "+" : "";
   return `${sign}${v.toFixed(2)}%`;
+}
+
+function applySort(key, dir) {
+  state.sortKey = key;
+  state.sortDir = dir;
+  document.getElementById("sortSelect").value = `${key}:${dir}`;
+  document.querySelectorAll("#stockTable th").forEach(t => t.classList.remove("sorted"));
+  const th = document.querySelector(`#stockTable th[data-key="${key}"]`);
+  if (th) th.classList.add("sorted");
+  render();
 }
 
 function render() {
@@ -227,18 +275,23 @@ function render() {
   const maxPriceRaw = document.getElementById("maxPrice").value;
   const maxPrice = maxPriceRaw === "" ? Infinity : parseFloat(maxPriceRaw);
   const q = document.getElementById("search").value.trim().toLowerCase();
-  const highOnly = document.getElementById("highConfOnly").checked;
+  const confFilter = document.getElementById("confFilter").value;
 
   let rows = state.stocks.filter(s => s.price >= minPrice && s.price <= maxPrice);
   if (q) {
     rows = rows.filter(s => s.name.toLowerCase().includes(q) || s.code.includes(q));
   }
-  if (highOnly) {
-    rows = rows.filter(s => s.confidence.startsWith("高"));
+  if (confFilter === "high") {
+    rows = rows.filter(s => confScore(s) >= 0.7);
+  } else if (confFilter === "mid") {
+    rows = rows.filter(s => confScore(s) >= 0.45);
+  } else if (confFilter === "safe") {
+    rows = rows.filter(s => !(s.news || []).some(n => n.fake_news_risk));
   }
 
+  const accessor = sortAccessors[state.sortKey] || (s => s[state.sortKey]);
   rows.sort((a, b) => {
-    const av = a[state.sortKey], bv = b[state.sortKey];
+    const av = accessor(a), bv = accessor(b);
     if (typeof av === "string") return av.localeCompare(bv) * state.sortDir;
     return (av - bv) * state.sortDir;
   });
@@ -305,19 +358,19 @@ function toggleNews(tr, stock) {
 document.querySelectorAll("#stockTable th[data-key]").forEach(th => {
   th.addEventListener("click", () => {
     const key = th.dataset.key;
-    if (state.sortKey === key) {
-      state.sortDir *= -1;
-    } else {
-      state.sortKey = key;
-      state.sortDir = -1;
-    }
-    document.querySelectorAll("#stockTable th").forEach(t => t.classList.remove("sorted"));
-    th.classList.add("sorted");
-    render();
+    const dir = state.sortKey === key ? state.sortDir * -1 : -1;
+    applySort(key, dir);
   });
 });
 
-["minPrice", "maxPrice", "search", "highConfOnly"].forEach(id => {
+document.getElementById("sortSelect").addEventListener("change", (e) => {
+  const [key, dir] = e.target.value.split(":");
+  applySort(key, parseInt(dir, 10));
+});
+
+document.getElementById("confFilter").addEventListener("change", render);
+
+["minPrice", "maxPrice", "search"].forEach(id => {
   document.getElementById(id).addEventListener("input", render);
 });
 

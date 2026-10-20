@@ -77,6 +77,7 @@ def score_stock(stock):
             "news_count": 0,
             "expectation_pct": 50.0,
             "confidence": "低(ニュース取得失敗)",
+            "confidence_score": 0.0,
             "news": [],
             "error": str(exc),
         }
@@ -132,6 +133,7 @@ def score_stock(stock):
         "news_count": len(articles),
         "expectation_pct": round(expectation, 1),
         "confidence": confidence,
+        "confidence_score": round(avg_weight, 3),
         "news": enriched,
     }
 
