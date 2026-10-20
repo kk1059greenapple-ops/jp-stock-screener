@@ -1,38 +1,39 @@
-"""株価の時系列データ(直近1年、yfinance=無料・Yahoo Financeベース)から、
+"""株価の時系列データ(直近1年、yfinance=無料・Yahoo Financeベース)と、
+株探(kabutan.jp、ログイン不要の公開ページ)のPER/PBR/決算発表予定日から、
 ニュースに依存しない客観的なテクニカル指標・ファンダメンタルズ指標を算出する。
 
 取引所の実際の値動きそのものに基づくため、ニュース見出しの解析よりも裏付けの確実な
 補助情報として扱い、上昇期待度に加点・減点する。
 
 ここに実装している考え方は、特定の秘密のノウハウではなく、ファクター投資(バリュー・モメンタム)、
-出来高分析、日本市場特有の制度・アノマリー(PBR1倍割れ改善要請、権利付き最終日前の買い需要)として
-広く公表・研究されている一般的な手法を、公式データで計算できる範囲に落とし込んだものである。
+出来高分析、日本市場特有の制度(PBR1倍割れ改善要請)として広く公表・研究されている一般的な手法を、
+公式・公開データで計算できる範囲に落とし込んだものである。
+
+PER/PBR/決算発表予定日はyfinanceではなく株探から取得している。yfinanceの銘柄詳細API
+(quoteSummary)はクラム認証が必要で、GitHub Actions等のクラウド実行環境の共有IPからの
+アクセスをYahoo Finance側がブロックすることを確認したため(価格データ自体を取得する
+chart APIはクラム不要でブロックされない)。
 """
+import re
 import time
 from datetime import datetime, timezone
 
 import pandas as pd
+import requests
 import yfinance as yf
-
-try:
-    from curl_cffi import requests as curl_requests
-
-    # GitHub Actionsの共有IPからyfinanceの銘柄詳細(.get_info()/.calendar)を連続取得すると、
-    # Yahoo Finance側のクラム認証がbotとみなして429/401で弾くことを確認した(ローカルでは発生しない)。
-    # 実ブラウザのTLSフィンガープリントを模すことで回避する、yfinance公式が推奨する対策。
-    _SESSION = curl_requests.Session(impersonate="chrome")
-except ImportError:
-    _SESSION = None
+from bs4 import BeautifulSoup
 
 NIKKEI_TICKER = "^N225"
 HISTORY_CHUNK_SIZE = 100
 SLEEP_BETWEEN_HISTORY_CHUNKS = 1.5
 SLEEP_BETWEEN_INFO_CALLS = 0.5
 
+KABUTAN_URL = "https://kabutan.jp/stock/?code={code}"
+KABUTAN_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; jp-stock-screener/1.0; personal use)"}
+
 # 東証は2023年にPBR1倍割れ企業へ資本効率・株価を意識した経営改善を要請しており、
 # この水準を切っている銘柄は改善期待の思惑的な資金が入りやすいテーマ性がある(公表済みの制度的事実)。
 PBR_IMPROVEMENT_THRESHOLD = 1.0
-RIGHTS_WINDOW_DAYS = 20  # 権利付き最終日までの日数がこの範囲なら「接近」とみなす
 EARNINGS_WARNING_DAYS = 10  # 決算発表までの日数がこの範囲なら注意喚起を表示
 
 
@@ -72,7 +73,6 @@ def fetch_price_history(codes):
                 threads=True,
                 progress=False,
                 auto_adjust=False,
-                session=_SESSION,
             )
         except Exception as exc:  # noqa: BLE001
             print(f"history batch failed: {exc}")
@@ -216,81 +216,74 @@ def technical_score(tf, fundamentals=None):
         score += 0.1
         reasons.append(f"PBR{pbr}倍で1倍割れ(東証が要請する資本効率・株価意識経営の改善テーマ性あり)")
 
-    days_to_rights = fundamentals.get("days_to_ex_dividend")
-    if days_to_rights is not None and 0 <= days_to_rights <= RIGHTS_WINDOW_DAYS:
-        score += 0.1
-        reasons.append(
-            f"権利付き最終日(配当・優待)まで約{days_to_rights}日で、権利取り需要が入りやすい時期"
-        )
-
     return max(-1.0, min(1.0, score)), reasons
 
 
+def _parse_numeric_cell(cell):
+    """「11.2倍」「3.22％」のようなセルから数値だけを取り出す。「-」等の非数値はNoneを返す。"""
+    text = cell.get_text(strip=True)
+    text = text.replace("倍", "").replace("％", "").replace(",", "")
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
 def fundamentals_for(code, price=None):
-    """PER・PBR・配当利回り・権利確定日・決算発表予定日(参考情報)。
+    """PER・PBR・配当利回り・決算発表予定日(参考情報)。
 
-    yfinanceの情報取得は失敗・欠損しうるため、失敗時や未取得の項目は単に含めない
+    yfinanceの銘柄詳細API(quoteSummary)はGitHub Actions等のクラウド実行環境のIPを
+    crumb認証の時点で拒否することを確認した(ログインを要さない価格データのchart APIは
+    問題なく動くが、詳細情報APIのみブロックされる)。そのため株探(kabutan.jp)の
+    ログイン不要の公開ページから直接スクレイピングする。
+
+    取得に失敗した場合や項目が欠損している場合は、単にその項目を含めない
     (未確認情報として扱い、無理に埋め合わせない)。
-
-    配当利回りは yfinance の `dividendYield` を直接使わず、1株配当(dividendRate、円建ての
-    実額なので単位の曖昧さがない)÷株価 から自前で計算する。`dividendYield` はyfinanceの
-    バージョンによって「比率(0.012)」と「%そのもの(1.2)」の混在が報告されており、
-    そのまま使うと桁を誤る(例: 49%のような非現実的な値になる)ため採用しない。
     """
-    ticker = yf.Ticker(f"{code}.T", session=_SESSION)
-    info = None
-    for attempt in range(2):
-        try:
-            info = ticker.get_info()
-            break
-        except Exception as exc:  # noqa: BLE001
-            print(f"fundamentals fetch failed for {code} (attempt {attempt + 1}): {exc}")
-            time.sleep(1.0)
-    if not info:
+    try:
+        resp = requests.get(KABUTAN_URL.format(code=code), headers=KABUTAN_HEADERS, timeout=15)
+        resp.raise_for_status()
+    except Exception as exc:  # noqa: BLE001
+        print(f"kabutan fetch failed for {code}: {exc}")
         return {}
 
+    soup = BeautifulSoup(resp.text, "html.parser")
     out = {}
-    per = info.get("trailingPE")
-    if per is not None:
-        out["per"] = round(per, 2)
-    pbr = info.get("priceToBook")
-    if pbr is not None:
-        out["pbr"] = round(pbr, 2)
 
-    dividend_rate = info.get("dividendRate")
-    ref_price = price or info.get("currentPrice") or info.get("previousClose")
-    if dividend_rate and ref_price:
-        out["dividend_yield_pct"] = round(dividend_rate / ref_price * 100, 2)
+    per_table = None
+    for table in soup.find_all("table"):
+        thead = table.find("thead")
+        if thead and "PER" in thead.get_text() and "PBR" in thead.get_text():
+            per_table = table
+            break
 
-    now = datetime.now(timezone.utc)
+    if per_table is not None:
+        tbody = per_table.find("tbody")
+        row = tbody.find("tr") if tbody else None
+        cells = row.find_all("td") if row else []
+        if len(cells) >= 3:
+            per = _parse_numeric_cell(cells[0])
+            pbr = _parse_numeric_cell(cells[1])
+            div_yield = _parse_numeric_cell(cells[2])
+            if per is not None:
+                out["per"] = per
+            if pbr is not None:
+                out["pbr"] = pbr
+            if div_yield is not None:
+                out["dividend_yield_pct"] = div_yield
 
-    # yfinanceは銘柄によって「次回の予定日」ではなく、更新が止まった古い実績日を返すことがある
-    # (配当停止銘柄などで2019年等の日付が返る例を確認済み)。無関係に古い/先すぎる日付は
-    # 「次回の目安」として意味を持たないため、直近の妥当な範囲のみ採用する。
-    ex_div_ts = info.get("exDividendDate")
-    if ex_div_ts:
-        try:
-            ex_div_date = datetime.fromtimestamp(ex_div_ts, tz=timezone.utc)
-            days_to_ex_dividend = (ex_div_date - now).days
-            if -30 <= days_to_ex_dividend <= 400:
-                out["ex_dividend_date"] = ex_div_date.date().isoformat()
-                out["days_to_ex_dividend"] = days_to_ex_dividend
-        except (OverflowError, OSError, ValueError):
-            pass
-
-    try:
-        calendar = ticker.calendar or {}
-        earnings_dates = calendar.get("Earnings Date") or []
-        if earnings_dates:
-            next_earnings = min(earnings_dates)
-            days_to_earnings = (
-                datetime.combine(next_earnings, datetime.min.time(), tzinfo=timezone.utc) - now
-            ).days
-            if -5 <= days_to_earnings <= 400:
-                out["next_earnings_date"] = next_earnings.isoformat()
+    dt_el = soup.find("dt", string=re.compile("決算発表予定日"))
+    if dt_el:
+        time_el = dt_el.find_next("time")
+        datetime_attr = time_el.get("datetime") if time_el else None
+        if datetime_attr:
+            try:
+                earnings_date = datetime.fromisoformat(datetime_attr)
+                days_to_earnings = (earnings_date - datetime.now(earnings_date.tzinfo)).days
+                out["next_earnings_date"] = earnings_date.date().isoformat()
                 out["days_to_earnings"] = days_to_earnings
-    except Exception:
-        pass
+            except ValueError:
+                pass
 
     return out
 

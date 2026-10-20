@@ -2,4 +2,4 @@ pandas
 openpyxl
 requests
 yfinance
-curl_cffi
+beautifulsoup4

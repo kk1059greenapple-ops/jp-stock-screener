@@ -416,7 +416,6 @@ function renderTechnicalPanel(stock) {
   if (fund.per != null) items.push(`<div class="tech-item"><span class="tech-label">PER</span>${fund.per}倍</div>`);
   if (fund.pbr != null) items.push(`<div class="tech-item"><span class="tech-label">PBR</span>${fund.pbr}倍</div>`);
   if (fund.dividend_yield_pct != null) items.push(`<div class="tech-item"><span class="tech-label">配当利回り</span>${fund.dividend_yield_pct}%</div>`);
-  if (fund.days_to_ex_dividend != null) items.push(`<div class="tech-item"><span class="tech-label">権利付き最終日まで</span>約${fund.days_to_ex_dividend}日(${fund.ex_dividend_date})</div>`);
   if (fund.days_to_earnings != null) items.push(`<div class="tech-item"><span class="tech-label">次回決算発表まで</span>約${fund.days_to_earnings}日(${fund.next_earnings_date})</div>`);
   const sr = stock.sector_relative;
   if (sr && sr.per_percentile != null) {
