@@ -170,6 +170,30 @@
     padding: 0.15rem 0.5rem;
     white-space: nowrap;
   }
+  .star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.1rem 0.3rem;
+    color: var(--muted);
+  }
+  .star-btn.active { color: #eab308; }
+  .panel-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .panel-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; }
+  .fav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .fav-item:last-child { border-bottom: none; }
+  .fav-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fav-missing { color: var(--muted); }
+  .fav-missing .fav-name { color: var(--muted); }
   .empty-state { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.9rem; }
   footer { max-width: 960px; margin: 1.5rem auto 0; padding: 0 1rem; color: var(--muted); font-size: 0.75rem; }
   footer a { color: var(--accent); }
@@ -184,13 +208,23 @@
     <strong>過去の値動きのみに基づく客観的なテクニカル指標</strong>を組み合わせた参考スコアであり、将来の株価を保証しません。
     ニュースは発信元の信頼度が低い・裏取りが取れていない場合「⚠要注意」を表示します。PER・PBR・配当利回りは参考情報であり、
     割安=即上昇を意味しません。これらの項目は自動更新のタイミングによっては表示されないことがあります(自宅PCから
-    <code>scan.sh</code> を実行した直後が最も情報が充実します)。実際の売買前に、必ずご自身でニュース原文と
-    <strong>楽天証券での取扱い有無</strong>をご確認ください。
+    <code>scan.sh</code> を実行した直後が最も情報が充実します)。「判定(買い目安/売り目安/様子見)」は上昇期待度と
+    テクニカル指標から機械的に導いたルールベースの目安であり、個別の投資判断を推奨するものではありません。
+    実際の売買前に、必ずご自身でニュース原文と<strong>楽天証券での取扱い有無</strong>をご確認ください。
   </div>
 </header>
 <main>
+  <div class="panel" id="favoritesPanel" style="display:none;">
+    <div class="panel-title">⭐ マイ銘柄</div>
+    <div id="favoritesList"></div>
+    <div class="panel-note">この端末のブラウザにのみ保存されます(他の端末やブラウザとは共有されません)。</div>
+  </div>
   <div class="panel">
     <div class="filters">
+      <div class="field checkbox" style="flex-direction:row; align-items:center;">
+        <input id="favOnly" type="checkbox">
+        <label for="favOnly" style="margin:0;">⭐マイ銘柄のみ表示</label>
+      </div>
       <div class="field">
         <label for="minPrice">最低株価(円)</label>
         <input id="minPrice" type="number" min="0" step="1" placeholder="0">
@@ -238,11 +272,13 @@
       <table id="stockTable">
         <thead>
           <tr>
+            <th></th>
             <th data-key="code">コード</th>
             <th data-key="name">銘柄名</th>
             <th data-key="price">現在値</th>
             <th data-key="change_pct">前日比</th>
             <th data-key="expectation_pct" class="sorted">上昇期待度</th>
+            <th>判定</th>
             <th data-key="confidence">信頼度</th>
             <th data-key="news_count">news</th>
             <th>楽天</th>
@@ -261,7 +297,60 @@
 </footer>
 
 <script>
-const state = { stocks: [], sortKey: "expectation_pct", sortDir: -1 };
+const FAVORITES_KEY = "jp-stock-screener:favorites";
+
+function loadFavorites() {
+  try {
+    const raw = localStorage.getItem(FAVORITES_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveFavorites(list) {
+  try {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(list));
+  } catch (e) {
+    // プライベートブラウズ等でlocalStorageが使えない場合は何もしない(次回起動時は空に戻る)
+  }
+}
+
+const state = { stocks: [], sortKey: "expectation_pct", sortDir: -1, favorites: loadFavorites() };
+
+function isFavorite(code) {
+  return state.favorites.some(f => f.code === code);
+}
+
+function toggleFavoriteByCode(code) {
+  const idx = state.favorites.findIndex(f => f.code === code);
+  if (idx >= 0) {
+    state.favorites.splice(idx, 1);
+  } else {
+    const stock = state.stocks.find(s => s.code === code);
+    state.favorites.push({ code, name: stock ? stock.name : code });
+  }
+  saveFavorites(state.favorites);
+  render();
+}
+
+// 上昇期待度とテクニカル指標から機械的に導くルールベースの目安。個別の投資判断の推奨ではない。
+function judgeSignal(s) {
+  const tf = s.technical;
+  const rsi = tf ? tf.rsi14 : null;
+  const trend = tf ? tf.trend_signal : 0;
+
+  if (rsi != null && rsi >= 80) {
+    return { label: "様子見(過熱感)", cls: "badge-mid" };
+  }
+  if (s.expectation_pct >= 65 && trend >= 0) {
+    return { label: "買い目安", cls: "badge-high" };
+  }
+  if (s.expectation_pct <= 35 || (trend === -1 && (rsi == null || rsi >= 35))) {
+    return { label: "売り目安", cls: "badge-low" };
+  }
+  return { label: "様子見", cls: "badge-mid" };
+}
 
 function creditBadgeClass(label) {
   if (label.startsWith("高")) return "badge-high";
@@ -309,10 +398,14 @@ function render() {
   const maxPrice = maxPriceRaw === "" ? Infinity : parseFloat(maxPriceRaw);
   const q = document.getElementById("search").value.trim().toLowerCase();
   const confFilter = document.getElementById("confFilter").value;
+  const favOnly = document.getElementById("favOnly").checked;
 
   let rows = state.stocks.filter(s => s.price >= minPrice && s.price <= maxPrice);
   if (q) {
     rows = rows.filter(s => s.name.toLowerCase().includes(q) || s.code.includes(q));
+  }
+  if (favOnly) {
+    rows = rows.filter(s => isFavorite(s.code));
   }
   if (confFilter === "high") {
     rows = rows.filter(s => confScore(s) >= 0.7);
@@ -340,12 +433,16 @@ function render() {
   for (const s of rows) {
     const tr = document.createElement("tr");
     const chgClass = s.change_pct > 0 ? "chg-up" : s.change_pct < 0 ? "chg-down" : "";
+    const fav = isFavorite(s.code);
+    const signal = judgeSignal(s);
     tr.innerHTML = `
+      <td><button class="star-btn ${fav ? "active" : ""}" onclick="event.stopPropagation(); toggleFavoriteByCode('${s.code}')" title="マイ銘柄に追加/削除">${fav ? "★" : "☆"}</button></td>
       <td>${s.code}</td>
       <td>${s.name}${s.earnings_soon ? ' <span class="earnings-badge" title="決算発表が近く、値動きが大きくなりやすい時期です">📅決算間近</span>' : ""}</td>
       <td>${s.price.toLocaleString()}円</td>
       <td class="${chgClass}">${fmtPct(s.change_pct)}</td>
       <td class="pct">${s.expectation_pct.toFixed(1)}%</td>
+      <td><span class="badge ${signal.cls}">${signal.label}</span></td>
       <td><span class="badge ${creditBadgeClass(s.confidence)}">${s.confidence}</span></td>
       <td>${s.news_count}</td>
       <td><a class="rakuten-link" target="_blank" rel="noopener" href="${s.rakuten_url}" onclick="event.stopPropagation()">確認</a></td>
@@ -353,6 +450,39 @@ function render() {
     tr.addEventListener("click", () => toggleNews(tr, s));
     tbody.appendChild(tr);
   }
+
+  renderFavoritesPanel();
+}
+
+function renderFavoritesPanel() {
+  const panel = document.getElementById("favoritesPanel");
+  const listEl = document.getElementById("favoritesList");
+  if (!state.favorites.length) {
+    panel.style.display = "none";
+    return;
+  }
+  panel.style.display = "block";
+  listEl.innerHTML = state.favorites.map(fav => {
+    const s = state.stocks.find(x => x.code === fav.code);
+    if (!s) {
+      return `
+        <div class="fav-item fav-missing">
+          <span class="fav-name">${fav.code} ${fav.name}</span>
+          <span>本日のデータなし</span>
+          <button class="star-btn active" onclick="toggleFavoriteByCode('${fav.code}')" title="マイ銘柄から外す">★</button>
+        </div>
+      `;
+    }
+    const signal = judgeSignal(s);
+    return `
+      <div class="fav-item">
+        <span class="fav-name">${s.code} ${s.name}</span>
+        <span class="pct">${s.expectation_pct.toFixed(1)}%</span>
+        <span class="badge ${signal.cls}">${signal.label}</span>
+        <button class="star-btn active" onclick="toggleFavoriteByCode('${s.code}')" title="マイ銘柄から外す">★</button>
+      </div>
+    `;
+  }).join("");
 }
 
 function toggleNews(tr, stock) {
@@ -366,7 +496,7 @@ function toggleNews(tr, stock) {
   const newsRow = document.createElement("tr");
   newsRow.className = "news-row";
   const td = document.createElement("td");
-  td.colSpan = 8;
+  td.colSpan = 10;
 
   const newsHtml = (!stock.news || stock.news.length === 0)
     ? "<p>関連ニュースが見つかりませんでした。</p>"
@@ -449,6 +579,7 @@ document.getElementById("sortSelect").addEventListener("change", (e) => {
 });
 
 document.getElementById("confFilter").addEventListener("change", render);
+document.getElementById("favOnly").addEventListener("change", render);
 
 ["minPrice", "maxPrice", "search"].forEach(id => {
   document.getElementById(id).addEventListener("input", render);
