@@ -194,6 +194,38 @@ def score_stock(stock, tf=None, fundamentals=None, sector_relative=None):
     }
 
 
+PRICE_BANDS = 10  # 価格帯の分割数(低価格帯の銘柄が深掘り対象から漏れないようにするための分散)
+
+
+def select_stratified_by_price(stocks, limit, bands=PRICE_BANDS):
+    """値動きの大きさだけで選ぶと、たまたまその日動きの少なかった価格帯(特に低価格帯)が
+    深掘り対象からごっそり漏れてしまう。株価でソートして等分した価格帯(バンド)ごとに
+    値動き上位を均等に選び、どの価格帯の銘柄も「上昇期待度」を見られるようにする。
+    各バンドで埋まらなかった枠は、価格帯を問わず値動きが大きい順に残りで埋める。
+    """
+    if not limit or limit <= 0 or len(stocks) <= limit:
+        return stocks
+
+    ordered_by_price = sorted(stocks, key=lambda s: s.get("price", 0))
+    n = len(ordered_by_price)
+    band_size = max(1, -(-n // bands))  # 切り上げ除算でおおよそ均等なバンドに分割
+    per_band_limit = max(1, limit // bands)
+
+    selected = []
+    for i in range(0, n, band_size):
+        band = ordered_by_price[i : i + band_size]
+        band.sort(key=lambda s: abs(s.get("change_pct", 0.0)), reverse=True)
+        selected.extend(band[:per_band_limit])
+
+    if len(selected) < limit:
+        selected_codes = {s["code"] for s in selected}
+        remaining = [s for s in ordered_by_price if s["code"] not in selected_codes]
+        remaining.sort(key=lambda s: abs(s.get("change_pct", 0.0)), reverse=True)
+        selected.extend(remaining[: limit - len(selected)])
+
+    return selected[:limit]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -205,10 +237,8 @@ def main():
     args = parser.parse_args()
 
     stocks = json.loads(PRICES_JSON.read_text(encoding="utf-8"))
-    # 値動きが大きい(=材料が出ている可能性が高い)銘柄を優先してニュースを深掘りする
-    stocks.sort(key=lambda s: abs(s.get("change_pct", 0.0)), reverse=True)
-    if args.limit:
-        stocks = stocks[: args.limit]
+    # 価格帯ごとに均等に値動き上位を選ぶ(低価格帯の銘柄が深掘り対象から漏れないようにする)
+    stocks = select_stratified_by_price(stocks, args.limit)
 
     print(f"fetching 1y price history for {len(stocks)} stocks + Nikkei 225 ...")
     history = fetch_price_history([s["code"] for s in stocks])
