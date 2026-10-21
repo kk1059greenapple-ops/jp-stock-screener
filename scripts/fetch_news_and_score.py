@@ -37,7 +37,7 @@ OUT_JSON = DATA_DIR / "scores.json"
 NEWS_LOOKBACK_DAYS = 10
 MAX_ARTICLES_PER_STOCK = 12
 SLEEP_BETWEEN_REQUESTS = 0.8
-DEFAULT_LIMIT = 150  # 1回の実行で深掘りする銘柄数の上限(ニュースソースへの負荷と実行時間を抑えるため)
+DEFAULT_LIMIT = 1000  # 1回の実行で深掘りする銘柄数の上限(ニュースソースへの負荷と実行時間を抑えるため)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; jp-stock-screener/1.0; personal use)"}
 
 

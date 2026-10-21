@@ -21,7 +21,7 @@ def main():
     parser.add_argument("--min-price", type=float, default=0)
     parser.add_argument("--max-price", type=float, default=100000)
     parser.add_argument("--skip-universe", action="store_true", help="data_j.xlsx の再取得をスキップ(既に取得済みの場合)")
-    parser.add_argument("--limit", type=int, default=150, help="ニュース深掘りする銘柄数の上限(0で無制限)")
+    parser.add_argument("--limit", type=int, default=1000, help="ニュース深掘りする銘柄数の上限(0で無制限)")
     args = parser.parse_args()
 
     py = sys.executable
