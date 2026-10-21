@@ -2,8 +2,9 @@ name: Update stock scores
 
 on:
   schedule:
-    # 平日 16:30 JST (市場終了後) = 07:30 UTC
-    - cron: "30 7 * * 1-5"
+    # 平日 6:30 JST (市場開始9:00前、前営業日の終値・ニュースを元に分析) = 前日21:30 UTC
+    # JSTの月〜金 6:30 は日をまたいでUTCの日〜木 21:30になるため、曜日はUTC基準で0-4(日〜木)を指定
+    - cron: "30 21 * * 0-4"
   workflow_dispatch:
     inputs:
       min_price:
