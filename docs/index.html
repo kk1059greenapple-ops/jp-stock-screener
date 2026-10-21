@@ -934,9 +934,13 @@ fetch(`./data/scores.json?t=${Date.now()}`, { cache: "no-store" })
   })
   .then(data => {
     state.stocks = data.stocks || [];
-    const updated = new Date(data.generated_at);
-    document.getElementById("lastUpdated").textContent =
-      `最終更新: ${updated.toLocaleString("ja-JP")}`;
+    const analyzed = new Date(data.generated_at);
+    let text = `分析更新: ${analyzed.toLocaleString("ja-JP")}`;
+    if (data.price_updated_at) {
+      const priceUpdated = new Date(data.price_updated_at);
+      text += ` / 株価更新: ${priceUpdated.toLocaleString("ja-JP")}`;
+    }
+    document.getElementById("lastUpdated").textContent = text;
     render();
   })
   .catch(() => {

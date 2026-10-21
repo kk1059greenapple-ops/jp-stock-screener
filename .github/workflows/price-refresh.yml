@@ -1,0 +1,45 @@
+name: Refresh stock prices
+
+on:
+  schedule:
+    # 平日 9:00〜15:45 JST(取引時間帯)に15分おき = 0:00〜6:45 UTC
+    - cron: "*/15 0-6 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-data-pipeline
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh current prices only (no news/technical/fundamentals)
+        run: python scripts/refresh_prices_only.py
+
+      - name: Copy data for GitHub Pages
+        run: |
+          mkdir -p docs/data
+          cp data/prices.json docs/data/
+          [ -f data/scores.json ] && cp data/scores.json docs/data/ || true
+
+      - name: Commit updated prices
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/prices.json data/scores.json docs/data/prices.json docs/data/scores.json 2>/dev/null || true
+          git diff --quiet --cached || git commit -m "chore: refresh stock prices"
+          git pull --rebase origin main
+          git push
