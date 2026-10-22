@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: stock-data-pipeline
+  group: update-stock-scores
   cancel-in-progress: false
 
 jobs:
